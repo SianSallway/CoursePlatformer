@@ -1,6 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended;
+using MonoGame.Extended.Tiled;
+using MonoGame.Extended.Tiled.Graphics;
+using MonoGame.Extended.ViewportAdapters;
 
 //GitHub Yay!
 
@@ -15,6 +19,11 @@ namespace Platformer_Sallway
         SpriteBatch spriteBatch;
 
         Player player = new Player();
+
+        Camera2D camera = null;
+        TiledMap map = null;
+        TiledMapRenderer mapRenderer = null;
+
 
         public Game1()
         {
@@ -45,6 +54,16 @@ namespace Platformer_Sallway
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             player.Load(Content);
+
+              BoxingViewportAdapter viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice,
+                graphics.GraphicsDevice.Viewport.Width,
+                graphics.GraphicsDevice.Viewport.Height);
+
+            camera = new Camera2D(viewportAdapter);
+            camera.Position = new Vector2(0, graphics.GraphicsDevice.Viewport.Height);
+
+            map = Content.Load<TiledMap>("firstLevel");
+            mapRenderer = new TiledMapRenderer(GraphicsDevice);
         }
 
         /// <summary>
@@ -85,7 +104,13 @@ namespace Platformer_Sallway
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            Matrix viewMatrix = camera.GetInverseViewMatrix();
+            Matrix projectionMatrix = Matrix.CreateOrthographicOffCenter(0,
+                GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 0, 0f, -1f);
+
+            spriteBatch.Begin(transformMatrix: viewMatrix);
+
+            mapRenderer.Draw(map, ref viewMatrix, ref projectionMatrix);
             player.Draw(spriteBatch);
 
             spriteBatch.End();

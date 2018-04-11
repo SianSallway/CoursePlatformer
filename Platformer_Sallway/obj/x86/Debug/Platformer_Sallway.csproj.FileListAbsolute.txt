@@ -23,3 +23,38 @@ C:\Users\Sian\Documents\AIE Course\Work\Platformer_Sallway\Platformer_Sallway\ob
 C:\Users\Sian\Documents\AIE Course\Work\Platformer_Sallway\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.exe
 C:\Users\Sian\Documents\AIE Course\Work\Platformer_Sallway\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.pdb
 C:\Users\Sian\Documents\AIE Course\Work\Platformer_Sallway\Platformer_Sallway\bin\Windows\x86\Debug\Content\hero.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\firstLevel.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\hero.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\medieval_tilesheet.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Platformer_Sallway.exe
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Platformer_Sallway.pdb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\MonoGame.Extended.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\MonoGame.Extended.Graphics.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\MonoGame.Extended.Tiled.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Newtonsoft.Json.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\MonoGame.Extended.pdb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\MonoGame.Extended.Graphics.pdb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\MonoGame.Extended.Tiled.pdb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Newtonsoft.Json.xml
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.csprojResolveAssemblyReference.cache
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.csproj.CoreCompileInputs.cache
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.exe
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.pdb
