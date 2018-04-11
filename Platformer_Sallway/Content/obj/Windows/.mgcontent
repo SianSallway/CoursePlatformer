@@ -5,6 +5,6 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/hero.png</File>
-    <File>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/Sample Tiled Level/Tileset.png</File>
+    <File>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/firstLevel.tmx</File>
   </SourceFiles>
 </SourceFileCollection>

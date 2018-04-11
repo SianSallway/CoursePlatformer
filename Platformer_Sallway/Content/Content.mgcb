@@ -26,3 +26,8 @@
 /processorParam:TextureFormat=Color
 /build:hero.png
 
+#begin firstLevel.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:firstLevel.tmx
+
