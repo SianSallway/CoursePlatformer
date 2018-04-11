@@ -4,6 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Sian/Documents/AIE Course/Work/Platformer_Sallway/Platformer_Sallway/Content/hero.png</File>
+    <File>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/hero.png</File>
+    <File>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/Sample Tiled Level/Tileset.png</File>
   </SourceFiles>
 </SourceFileCollection>
