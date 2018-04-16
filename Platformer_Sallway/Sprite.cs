@@ -16,6 +16,7 @@ namespace Platformer_Sallway
 
         Texture2D texture;
 
+
         public Sprite()
         {
 

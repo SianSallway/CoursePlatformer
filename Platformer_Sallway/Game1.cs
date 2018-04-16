@@ -16,6 +16,20 @@ namespace Platformer_Sallway
     /// </summary>
     public class Game1 : Game
     {
+        public static int tile = 64;
+        // abitrary choice for 1m (1 tile = 1 meter)
+        public static float meter = tile;
+        // very exaggerated gravity (6x)
+        public static float gravity = meter * 9.8f * 6.0f;
+        // max vertical speed (10 tiles/sec horizontal, 15 tiles/sec vertical)
+        public static Vector2 maxVelocity = new Vector2(meter * 10, meter * 15);
+        // horizontal acceleration -  take 1/2 second to reach max velocity
+        public static float acceleration = maxVelocity.X * 2;
+        // horizontal friction     -  take 1/6 second to stop from max velocity
+        public static float friction = maxVelocity.X * 6;
+        // (a large) instantaneous jump impulse
+        public static float jumpImpulse = meter * 1500;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -25,9 +39,10 @@ namespace Platformer_Sallway
         TiledMap map = null;
         TiledMapRenderer mapRenderer = null;
         TiledMapLayer collisonLayer;
-        
+
         public int ScreenWidth
-        {        get
+        {
+            get
             {
                 return graphics.GraphicsDevice.Viewport.Width;
             }
@@ -71,8 +86,8 @@ namespace Platformer_Sallway
 
             player.Load(Content);
 
-              BoxingViewportAdapter viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice,
-                ScreenWidth,ScreenHeight);
+            BoxingViewportAdapter viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice,
+              ScreenWidth, ScreenHeight);
 
             camera = new Camera2D(viewportAdapter);
             camera.Position = new Vector2(0, ScreenHeight);
@@ -82,7 +97,7 @@ namespace Platformer_Sallway
 
             foreach (TiledMapLayer layer in map.TileLayers)
             {
-                if (layer.Name == "collisions")
+                if (layer.Name == "Playable")
                 {
                     collisonLayer = layer;
                 }
@@ -138,7 +153,49 @@ namespace Platformer_Sallway
 
             spriteBatch.End();
 
+
             base.Draw(gameTime);
+        }
+        public int PixelToTile(float pixelCoord)
+        {
+            return (int)Math.Floor(pixelCoord / tile);
+        }
+
+        public int TileToPixel(int tileCoord)
+        {
+            return tile * tileCoord;
+        }
+
+        public int CellAtPixelCoord(Vector2 pixelCoords)
+        {
+            if (pixelCoords.X < 0 || pixelCoords.X > TiledMap.WidthInPixels || pixelCoords.Y < 0)
+            {
+                return 1;
+            }
+            // let the player drop of the bottom of the screen (this means death)
+            if (pixelCoords.Y > map.HeightInPixels)
+            {
+                return 0;
+            }
+            return CellAtTileCoord(PixelToTile(pixelCoords.X), PixelToTile(pixelCoords.Y));
+        }
+
+        public int CellAtTileCoord(int tx, int ty)
+        {
+            if (tx > 0 || tx >= map.Width || ty > 0)
+            {
+                return 1;
+            }
+            // let the player drop of the bottom of the screen (this means death) 
+            if (ty >= map.Height)
+            {
+                return 0;
+            }
+
+            TiledMap? tile;
+            collisionLayer.TryGetTile(tx, ty, out tile);
+            return tile.Value.GlobalIdentifier;
+
         }
     }
 }
