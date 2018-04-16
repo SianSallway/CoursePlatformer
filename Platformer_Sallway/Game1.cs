@@ -5,6 +5,7 @@ using MonoGame.Extended;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Graphics;
 using MonoGame.Extended.ViewportAdapters;
+using System;
 
 //GitHub Yay!
 
@@ -18,12 +19,27 @@ namespace Platformer_Sallway
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Player player = new Player();
+        Player player = null;
 
         Camera2D camera = null;
         TiledMap map = null;
         TiledMapRenderer mapRenderer = null;
+        TiledMapLayer collisonLayer;
+        
+        public int ScreenWidth
+        {        get
+            {
+                return graphics.GraphicsDevice.Viewport.Width;
+            }
+        }
 
+        public int ScreenHeight
+        {
+            get
+            {
+                return graphics.GraphicsDevice.Viewport.Height;
+            }
+        }
 
         public Game1()
         {
@@ -56,14 +72,21 @@ namespace Platformer_Sallway
             player.Load(Content);
 
               BoxingViewportAdapter viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice,
-                graphics.GraphicsDevice.Viewport.Width,
-                graphics.GraphicsDevice.Viewport.Height);
+                ScreenWidth,ScreenHeight);
 
             camera = new Camera2D(viewportAdapter);
-            camera.Position = new Vector2(0, graphics.GraphicsDevice.Viewport.Height);
+            camera.Position = new Vector2(0, ScreenHeight);
 
             map = Content.Load<TiledMap>("firstLevel");
             mapRenderer = new TiledMapRenderer(GraphicsDevice);
+
+            foreach (TiledMapLayer layer in map.TileLayers)
+            {
+                if (layer.Name == "collisions")
+                {
+                    collisonLayer = layer;
+                }
+            }
         }
 
         /// <summary>
