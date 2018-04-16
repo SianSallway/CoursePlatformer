@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/firstLevel.tmx</SourceFile>
-  <SourceTime>2018-04-11T21:08:35.6507176+10:00</SourceTime>
+  <SourceTime>2018-04-16T19:28:56.9869776+10:00</SourceTime>
   <DestFile>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/bin/Windows/firstLevel.xnb</DestFile>
-  <DestTime>2018-04-11T21:08:48.1748594+10:00</DestTime>
+  <DestTime>2018-04-16T19:29:39.3447085+10:00</DestTime>
   <Importer>TiledMapImporter</Importer>
   <ImporterTime>2017-12-11T04:41:22+11:00</ImporterTime>
   <Processor>TiledMapProcessor</Processor>
