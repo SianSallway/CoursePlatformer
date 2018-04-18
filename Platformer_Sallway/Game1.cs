@@ -38,7 +38,7 @@ namespace Platformer_Sallway
         Camera2D camera = null;
         TiledMap map = null;
         TiledMapRenderer mapRenderer = null;
-        TiledMapLayer collisonLayer;
+        TiledMapLayer collisionLayer;
 
         public int ScreenWidth
         {
@@ -71,7 +71,7 @@ namespace Platformer_Sallway
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            player = new Player(this);
             base.Initialize();
         }
 
@@ -99,7 +99,7 @@ namespace Platformer_Sallway
             {
                 if (layer.Name == "Playable")
                 {
-                    collisonLayer = layer;
+                    collisionLayer = layer;
                 }
             }
         }
@@ -126,10 +126,7 @@ namespace Platformer_Sallway
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             player.Update(deltaTime);
 
-
-
-
-
+            camera.Position = player.Position - new Vector2(ScreenWidth / 2, ScreenHeight / 2);
 
             base.Update(gameTime);
         }
@@ -168,7 +165,7 @@ namespace Platformer_Sallway
 
         public int CellAtPixelCoord(Vector2 pixelCoords)
         {
-            if (pixelCoords.X < 0 || pixelCoords.X > TiledMap.WidthInPixels || pixelCoords.Y < 0)
+            if (pixelCoords.X < 0 || pixelCoords.X > map.WidthInPixels || pixelCoords.Y < 0)
             {
                 return 1;
             }
@@ -192,7 +189,7 @@ namespace Platformer_Sallway
                 return 0;
             }
 
-            TiledMap? tile;
+            TiledMapTile? tile;
             collisionLayer.TryGetTile(tx, ty, out tile);
             return tile.Value.GlobalIdentifier;
 
