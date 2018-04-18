@@ -44,11 +44,18 @@ namespace Platformer_Sallway
 
         public void Load(ContentManager content)
         {
-            sprite.Load(content, "hero");
+            //sprite.Load(content, "hero");
+
+            AnimatedTexture animation = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
+            animation.Load(content, "walk", 12, 20);
+
+            sprite.Add(animation, 0, -5);
+            sprite.Pause();
         }
 
         public void Update(float deltaTime)
         {
+            UpdateInput(deltaTime);
             sprite.Update(deltaTime);
 
             KeyboardState state = Keyboard.GetState();
@@ -93,6 +100,8 @@ namespace Platformer_Sallway
             if (Keyboard.GetState().IsKeyDown(Keys.Left) == true)
             {
                 acceleration.X -= Game1.acceleration;
+                sprite.SetFlipped(true);
+                sprite.Play();
             }
             else if (wasMovingLeft == true)
             {
@@ -102,6 +111,8 @@ namespace Platformer_Sallway
             if (Keyboard.GetState().IsKeyDown(Keys.Right) == true)
             {
                 acceleration.X += Game1.acceleration;
+                sprite.SetFlipped(false);
+                sprite.Play();
             }
             else if (wasMovingRight == true) { acceleration.X -= Game1.friction; }
 
@@ -132,6 +143,7 @@ namespace Platformer_Sallway
             {
                 // clamp at zero to prevent friction from making us jiggle side to side
                 velocity.X = 0;
+                sprite.Pause();
             }
 
             // collision detection
@@ -141,12 +153,12 @@ namespace Platformer_Sallway
             // This means we can short-circuit and avoid building a general purpose
             // collision detection engine by simply looking at the 1 to 4 cells that
             // the player occupies:
-            int tx = game.PixelToTile(sprite.position.X);
-            int ty = game.PixelToTile(sprite.position.Y);
+            int tx = game.PixelToTile(position.X);
+            int ty = game.PixelToTile(position.Y);
             // nx = true if player overlaps right
-            bool nx = (sprite.position.X) % Game1.tile != 0;
+            bool nx = (position.X) % Game1.tile != 0;
             // ny = true if player overlaps below
-            bool ny = (sprite.position.Y) % Game1.tile != 0;
+            bool ny = (position.Y) % Game1.tile != 0;
             bool cell = game.CellAtTileCoord(tx, ty) != 0;
             bool cellright = game.CellAtTileCoord(tx + 1, ty) != 0;
             bool celldown = game.CellAtTileCoord(tx, ty + 1) != 0;
@@ -160,7 +172,7 @@ namespace Platformer_Sallway
                 if ((celldown && !cell) || (celldiag && !cellright && nx))
                 {
                     // clamp the y position to avoid falling into platform below                 
-                    sprite.position.Y = game.TileToPixel(ty);
+                    position.Y = game.TileToPixel(ty);
                     this.velocity.Y = 0;        // stop downward velocity
                     this.isFalling = false;     // no longer falling
                     this.isJumping = false;     // (or jumping)
@@ -172,8 +184,9 @@ namespace Platformer_Sallway
                 if ((cell && !celldown) || (cellright && !celldiag && nx))
                 {
                     // clamp the y position to avoid jumping into platform above
-                    sprite.position.Y = game.TileToPixel(ty + 1);
+                    position.Y = game.TileToPixel(ty + 1);
                     this.velocity.Y = 0;
+                    sprite.Pause();
                     // stop upward velocity
                     // player is no longer really in that cell, we clamped them
                     // to the cell below
@@ -191,7 +204,7 @@ namespace Platformer_Sallway
                 {
                     // clamp the x position to avoid moving into the platform
                     // we just hit
-                    sprite.position.X = game.TileToPixel(tx);
+                    position.X = game.TileToPixel(tx);
                     this.velocity.X = 0;      // stop horizontal velocity
                 }
             }
@@ -201,7 +214,7 @@ namespace Platformer_Sallway
                 {
                     // clamp the x position to avoid moving into the platform
                     // we just hit
-                    sprite.position.X = game.TileToPixel(tx + 1);
+                    position.X = game.TileToPixel(tx + 1);
                     this.velocity.X = 0;      // stop horizontal velocity
                 }
             }
