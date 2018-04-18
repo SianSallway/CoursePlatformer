@@ -59,7 +59,7 @@ namespace Platformer_Sallway
            
         }
 
-        public void Pause ()
+        public void Pause()
         {
             animations[currentAnimation].Pause();
         }
