@@ -216,6 +216,7 @@ namespace Platformer_Sallway
                     // we just hit
                     position.X = game.TileToPixel(tx + 1);
                     this.velocity.X = 0;      // stop horizontal velocity
+                    sprite.Pause();
                 }
             }
 
