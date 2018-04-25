@@ -35,6 +35,9 @@ namespace Platformer_Sallway
 
         Player player = null;
 
+        SpriteFont arialFont;
+        int score = 0;
+
         Camera2D camera = null;
         TiledMap map = null;
         TiledMapRenderer mapRenderer = null;
@@ -85,6 +88,8 @@ namespace Platformer_Sallway
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             player.Load(Content);
+
+            arialFont = Content.Load<SpriteFont>("Arial");
 
             BoxingViewportAdapter viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice,
               ScreenWidth, ScreenHeight);
@@ -148,6 +153,10 @@ namespace Platformer_Sallway
             mapRenderer.Draw(map, ref viewMatrix, ref projectionMatrix);
             player.Draw(spriteBatch);
 
+            // draw all the GUI components in a separte SpriteBatch section 
+            spriteBatch.DrawString(arialFont, "Score : " + score.ToString(),
+                new Vector2(20, 20), Color.Green);
+
             spriteBatch.End();
 
 
@@ -194,5 +203,7 @@ namespace Platformer_Sallway
             return tile.Value.GlobalIdentifier;
 
         }
+
+
     }
 }
