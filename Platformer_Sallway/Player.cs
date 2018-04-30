@@ -23,7 +23,7 @@ namespace Platformer_Sallway
 
         public Vector2 Position
         {
-            get { return position; }
+            get { return sprite.position; }
         }
 
         public Player(Game1 game)
@@ -58,7 +58,7 @@ namespace Platformer_Sallway
             UpdateInput(deltaTime);
             sprite.Update(deltaTime);
 
-            KeyboardState state = Keyboard.GetState();
+           /* KeyboardState state = Keyboard.GetState();
             int speed = 50;
                         
             if (state.IsKeyDown(Keys.Up) == true)
@@ -78,15 +78,17 @@ namespace Platformer_Sallway
             {
                 position.X += speed * deltaTime;
                 hFlipped = false;
-            }
+            }*/
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if(hFlipped == true)
+            sprite.Draw(spriteBatch);
+
+            /*if (hFlipped == true)
                 sprite.Draw(spriteBatch, position, SpriteEffects.FlipHorizontally);
             else
-                sprite.Draw(spriteBatch, position);
+                sprite.Draw(spriteBatch, position); */
         }
 
         private void UpdateInput(float deltaTime)
@@ -128,7 +130,7 @@ namespace Platformer_Sallway
             velocity.X = MathHelper.Clamp(velocity.X,  -Game1.maxVelocity.X, Game1.maxVelocity.X);
             velocity.Y = MathHelper.Clamp(velocity.Y,  -Game1.maxVelocity.Y, Game1.maxVelocity.Y); 
 
-            position += velocity * deltaTime;
+            sprite.position += velocity * deltaTime; 
 
             // One tricky aspect of using a frictional force to slow the player down
             // (as opposed to just allowing a dead-stop) is that the force is highly

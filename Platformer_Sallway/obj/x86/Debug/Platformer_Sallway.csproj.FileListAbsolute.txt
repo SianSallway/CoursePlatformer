@@ -58,3 +58,5 @@ C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.csproj.CoreCompileInputs.cache
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.exe
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.pdb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\Arial.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\walk.xnb

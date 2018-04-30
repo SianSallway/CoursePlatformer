@@ -41,7 +41,7 @@ namespace Platformer_Sallway
         Camera2D camera = null;
         TiledMap map = null;
         TiledMapRenderer mapRenderer = null;
-        TiledMapLayer collisionLayer;
+        TiledMapTileLayer collisionLayer;
 
         public int ScreenWidth
         {
@@ -100,7 +100,7 @@ namespace Platformer_Sallway
             map = Content.Load<TiledMap>("firstLevel");
             mapRenderer = new TiledMapRenderer(GraphicsDevice);
 
-            foreach (TiledMapLayer layer in map.TileLayers)
+            foreach (TiledMapTileLayer layer in map.TileLayers)
             {
                 if (layer.Name == "Playable")
                 {
@@ -108,7 +108,7 @@ namespace Platformer_Sallway
                 }
             }
         }
-
+        
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// game-specific content.
@@ -134,7 +134,7 @@ namespace Platformer_Sallway
             camera.Position = player.Position - new Vector2(ScreenWidth / 2, ScreenHeight / 2);
 
             base.Update(gameTime);
-        }
+        } 
 
         /// <summary>
         /// This is called when the game should draw itself.
