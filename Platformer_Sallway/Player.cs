@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -20,6 +21,10 @@ namespace Platformer_Sallway
 
         Vector2 velocity = Vector2.Zero;
         Vector2 position = Vector2.Zero;
+
+        //Jump Instance and Sound
+        SoundEffect jumpSound;
+        SoundEffectInstance jumpSoundInstance;
 
         public Vector2 Position
         {
@@ -48,6 +53,9 @@ namespace Platformer_Sallway
 
             AnimatedTexture animation = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
             animation.Load(content, "walk", 12, 20);
+
+            jumpSound = content.Load<SoundEffect>("Jump");
+            jumpSoundInstance = jumpSound.CreateInstance();
 
             sprite.Add(animation, 0, -5);
             sprite.Pause();
@@ -116,11 +124,16 @@ namespace Platformer_Sallway
                 sprite.SetFlipped(false);
                 sprite.Play();
             }
-            else if (wasMovingRight == true) { acceleration.X -= Game1.friction; }
+            else if (wasMovingRight == true)
+            {
+                acceleration.X -= Game1.friction;
+            }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Up) == true && this.isJumping == false && falling == false)
             {
-                acceleration.Y -= Game1.jumpImpulse; this.isJumping = true;
+                acceleration.Y -= Game1.jumpImpulse;
+                this.isJumping = true;
+                jumpSoundInstance.Play();
             }
 
             // integrate the forces to calculate the new position and velocity
