@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using MonoGame.Extended;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Graphics;
@@ -16,6 +17,8 @@ namespace Platformer_Sallway
     /// </summary>
     public class Game1 : Game
     {
+        Song gameMusic;
+
         public static int tile = 64;
         // abitrary choice for 1m (1 tile = 1 meter)
         public static float meter = tile;
@@ -107,6 +110,10 @@ namespace Platformer_Sallway
                     collisionLayer = layer;
                 }
             }
+
+            //Loading game music
+            gameMusic = Content.Load<Song>("SuperHero_original_no_Intro");
+            MediaPlayer.Play(gameMusic);
         }
         
         /// <summary>

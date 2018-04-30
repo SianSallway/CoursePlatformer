@@ -62,3 +62,43 @@
 /processorParam:TextureFormat=Compressed
 /build:Arial.spritefont
 
+#begin SFX and Music Pack/SFX and Music Pack/Music/readme.txt
+/importer:
+/processor:
+/build:SFX and Music Pack/SFX and Music Pack/Music/readme.txt
+
+#begin SFX and Music Pack/SFX and Music Pack/Music/SuperHero_original.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:SFX and Music Pack/SFX and Music Pack/Music/SuperHero_original.ogg
+
+#begin SFX and Music Pack/SFX and Music Pack/Music/SuperHero_original_no_Intro.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:SFX and Music Pack/SFX and Music Pack/Music/SuperHero_original_no_Intro.ogg
+
+#begin SFX and Music Pack/SFX and Music Pack/Music/Superhero_violin.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:SFX and Music Pack/SFX and Music Pack/Music/Superhero_violin.ogg
+
+#begin SFX and Music Pack/SFX and Music Pack/Music/Superhero_violin_no_intro.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:SFX and Music Pack/SFX and Music Pack/Music/Superhero_violin_no_intro.ogg
+
+#begin SFX and Music Pack/SFX and Music Pack/SFX/Jump.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SFX and Music Pack/SFX and Music Pack/SFX/Jump.wav
+
+#begin SFX and Music Pack/SFX and Music Pack/SFX/readme.txt
+/importer:
+/processor:
+/build:SFX and Music Pack/SFX and Music Pack/SFX/readme.txt
+
