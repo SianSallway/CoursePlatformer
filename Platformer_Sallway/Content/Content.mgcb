@@ -43,30 +43,6 @@
 /processorParam:TextureFormat=Color
 /build:medieval_tilesheet.png
 
-#begin walk.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:walk.png
-
-#begin Arial.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Arial.spritefont
-
-#begin SFX and Music Pack/SFX and Music Pack/Music/readme.txt
-/importer:
-/processor:
-/build:SFX and Music Pack/SFX and Music Pack/Music/readme.txt
-
 #begin SFX and Music Pack/SFX and Music Pack/Music/SuperHero_original.ogg
 /importer:OggImporter
 /processor:SongProcessor
@@ -97,8 +73,15 @@
 /processorParam:Quality=Best
 /build:SFX and Music Pack/SFX and Music Pack/SFX/Jump.wav
 
-#begin SFX and Music Pack/SFX and Music Pack/SFX/readme.txt
-/importer:
-/processor:
-/build:SFX and Music Pack/SFX and Music Pack/SFX/readme.txt
+#begin walk.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:walk.png
 

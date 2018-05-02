@@ -43,10 +43,6 @@ namespace Platformer_Sallway
         bool hFlipped = false;
 
 
-        public Player()
-        {
-        }
-
         public void Load(ContentManager content)
         {
             //sprite.Load(content, "hero");

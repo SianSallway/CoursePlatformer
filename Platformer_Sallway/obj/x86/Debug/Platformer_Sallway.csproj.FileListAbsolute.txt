@@ -58,5 +58,13 @@ C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.csproj.CoreCompileInputs.cache
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.exe
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.pdb
-C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\Arial.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\SFX and Music Pack\SFX and Music Pack\Music\SuperHero_original.wma
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\SFX and Music Pack\SFX and Music Pack\Music\SuperHero_original.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\SFX and Music Pack\SFX and Music Pack\Music\SuperHero_original_no_Intro.wma
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\SFX and Music Pack\SFX and Music Pack\Music\SuperHero_original_no_Intro.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\SFX and Music Pack\SFX and Music Pack\Music\Superhero_violin.wma
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\SFX and Music Pack\SFX and Music Pack\Music\Superhero_violin.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\SFX and Music Pack\SFX and Music Pack\Music\Superhero_violin_no_intro.wma
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\SFX and Music Pack\SFX and Music Pack\Music\Superhero_violin_no_intro.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\SFX and Music Pack\SFX and Music Pack\SFX\Jump.xnb
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\walk.xnb

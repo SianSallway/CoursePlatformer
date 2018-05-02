@@ -151,7 +151,7 @@ namespace Platformer_Sallway
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            Matrix viewMatrix = camera.GetInverseViewMatrix();
+            Matrix viewMatrix = camera.GetViewMatrix();
             Matrix projectionMatrix = Matrix.CreateOrthographicOffCenter(0,
                 GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 0, 0f, -1f);
 
@@ -195,7 +195,7 @@ namespace Platformer_Sallway
 
         public int CellAtTileCoord(int tx, int ty)
         {
-            if (tx > 0 || tx >= map.Width || ty > 0)
+            if (tx < 0 || tx >= map.Width || ty < 0)
             {
                 return 1;
             }
