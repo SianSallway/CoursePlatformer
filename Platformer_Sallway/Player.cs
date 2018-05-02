@@ -15,7 +15,7 @@ namespace Platformer_Sallway
     {
         Sprite sprite = new Sprite();
 
-        Game1 game = null; 
+        Game1 game = null;
         bool isFalling = true;
         bool isJumping = false;
 
@@ -29,7 +29,7 @@ namespace Platformer_Sallway
         public Vector2 Position
         {
             get { return sprite.position; }
-            set { sprite.position = value; } 
+            set { sprite.position = value; }
         }
 
         public Player(Game1 game)
@@ -40,7 +40,7 @@ namespace Platformer_Sallway
             velocity = Vector2.Zero;
             position = Vector2.Zero;
         }
-       
+
         bool hFlipped = false;
 
 
@@ -64,27 +64,27 @@ namespace Platformer_Sallway
             UpdateInput(deltaTime);
             sprite.Update(deltaTime);
 
-           /* KeyboardState state = Keyboard.GetState();
-            int speed = 50;
-                        
-            if (state.IsKeyDown(Keys.Up) == true)
-            {
-                position.Y -= speed * deltaTime;
-            }
-            if (state.IsKeyDown(Keys.Down) == true)
-            {
-                position.Y += speed * deltaTime;
-            }
-            if (state.IsKeyDown(Keys.Left) == true)
-            {
-                position.X -= speed * deltaTime;
-                hFlipped = true;
-            }
-            if (state.IsKeyDown(Keys.Right) == true)
-            {
-                position.X += speed * deltaTime;
-                hFlipped = false;
-            }*/
+            /* KeyboardState state = Keyboard.GetState();
+             int speed = 50;
+
+             if (state.IsKeyDown(Keys.Up) == true)
+             {
+                 position.Y -= speed * deltaTime;
+             }
+             if (state.IsKeyDown(Keys.Down) == true)
+             {
+                 position.Y += speed * deltaTime;
+             }
+             if (state.IsKeyDown(Keys.Left) == true)
+             {
+                 position.X -= speed * deltaTime;
+                 hFlipped = true;
+             }
+             if (state.IsKeyDown(Keys.Right) == true)
+             {
+                 position.X += speed * deltaTime;
+                 hFlipped = false;
+             }*/
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -142,9 +142,9 @@ namespace Platformer_Sallway
                 -Game1.maxVelocity.X, Game1.maxVelocity.X);
 
             velocity.Y = MathHelper.Clamp(velocity.Y,
-                -Game1.maxVelocity.Y, Game1.maxVelocity.Y); 
+                -Game1.maxVelocity.Y, Game1.maxVelocity.Y);
 
-            sprite.position += velocity * deltaTime; 
+            sprite.position += velocity * deltaTime;
 
             // One tricky aspect of using a frictional force to slow the player down
             // (as opposed to just allowing a dead-stop) is that the force is highly
@@ -240,6 +240,9 @@ namespace Platformer_Sallway
             // player is now falling or not. We can do that by looking to see if
             // there is a platform below them
             this.isFalling = !(celldown || (nx && celldiag));
-        
+
         }
+
+
     }
+}

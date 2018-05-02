@@ -7,6 +7,7 @@ using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Graphics;
 using MonoGame.Extended.ViewportAdapters;
 using System;
+using System.Collections.Generic;
 
 //GitHub Yay!
 
@@ -32,6 +33,9 @@ namespace Platformer_Sallway
         public static float friction = maxVelocity.X * 6;
         // (a large) instantaneous jump impulse
         public static float jumpImpulse = meter * 1500;
+
+        List<Enemy> enemies = new List<Enemy>();
+        Sprite crystal = null;
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -113,6 +117,35 @@ namespace Platformer_Sallway
                 }
             }
 
+            foreach (TiledMapObjectLayer layer in map.ObjectLayers)
+            {
+                if (layer.Name == "Enemies")
+                {
+                    foreach (TiledMapObject obj in layer.Objects)
+                    {
+                        Enemy enemy = new Enemy(this);
+                        enemy.Load(Content);
+                        enemy.Position = new Vector2(obj.Position.X, obj.Position.Y);
+                        enemies.Add(enemy);
+                    }
+                }
+                
+                if (layer.Name == "Collectables")
+                {
+                    TiledMapObject obj = layer.Objects[0];
+
+                    if (obj != null)
+                    {
+                        AnimatedTexture anim = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
+                        anim.Load(Content, "chest_closed", 1, 1);
+
+                        crystal = new Sprite();
+                        crystal.Add(anim, 0, 5);
+                        crystal.position = new Vector2(obj.Position.X, obj.Position.Y);
+                    }
+                }
+            }
+
             //Loading game music
             gameMusic = Content.Load<Song>("SuperHero_original_no_Intro");
             MediaPlayer.Play(gameMusic);
@@ -141,7 +174,14 @@ namespace Platformer_Sallway
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             player.Update(deltaTime);
 
+            foreach (Enemy e in enemies)
+            {
+                e.Update(deltaTime);
+            }
+
             camera.Position = player.Position - new Vector2(ScreenWidth / 2, ScreenHeight / 2);
+
+            CheckCollisions();
 
             base.Update(gameTime);
         } 
@@ -162,6 +202,12 @@ namespace Platformer_Sallway
 
             mapRenderer.Draw(map, ref viewMatrix, ref projectionMatrix);
             player.Draw(spriteBatch);
+
+            foreach (Enemy e in enemies)
+            {
+                e.Draw(spriteBatch);
+            }
+            crystal.Draw(spriteBatch);
 
             // draw all the GUI components in a separte SpriteBatch section 
             spriteBatch.DrawString(arialFont, "Score : " + score.ToString(),
@@ -214,6 +260,38 @@ namespace Platformer_Sallway
 
         }
 
+        private void CheckCollisions()
+        {
+            foreach (Enemy e in enemies)
+            {
+                if (IsColliding(player.Bounds, e.Bounds) == true)
+                {
+                    if (player.IsJumping && player.Velocity.Y > 0)
+                    {
+                        player.JumpOnCollision();
+                        enemies.Remove(e);
+                        break;
+                    }
+                    else
+                    {
+                        // player just died
+                    }
+                }
+            }
+        }
+        private bool IsColliding(Rectangle rect1, Rectangle rect2)
+        {
+            if (rect1.X + rect1.Width < rect2.X ||
+            rect1.X > rect2.X + rect2.Width ||
+            rect1.Y + rect1.Height < rect2.Y ||
+            rect1.Y > rect2.Y + rect2.Height)
+            {
+                // these two rectangles are not colliding
+                return false;
+            }
+            // else, the two AABB rectangles overlap, therefore collision
+            return true;
+        }
 
     }
 }
