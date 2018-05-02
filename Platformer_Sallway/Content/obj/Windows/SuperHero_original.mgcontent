@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/SFX and Music Pack/SFX and Music Pack/Music/SuperHero_original.ogg</SourceFile>
+  <SourceFile>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/SuperHero_original.ogg</SourceFile>
   <SourceTime>2018-04-30T19:57:51.1180837+10:00</SourceTime>
-  <DestFile>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/bin/Windows/SFX and Music Pack/SFX and Music Pack/Music/SuperHero_original.xnb</DestFile>
-  <DestTime>2018-05-02T12:05:42.5595185+10:00</DestTime>
+  <DestFile>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/bin/Windows/SuperHero_original.xnb</DestFile>
+  <DestTime>2018-05-02T18:24:21.675154+10:00</DestTime>
   <Importer>OggImporter</Importer>
   <ImporterTime>2017-03-02T02:05:36+11:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/bin/Windows/SFX and Music Pack/SFX and Music Pack/Music/SuperHero_original.wma</string>
+    <string>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/bin/Windows/SuperHero_original.wma</string>
   </BuildOutput>
 </PipelineBuildEvent>

@@ -43,36 +43,6 @@
 /processorParam:TextureFormat=Color
 /build:medieval_tilesheet.png
 
-#begin SFX and Music Pack/SFX and Music Pack/Music/SuperHero_original.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:SFX and Music Pack/SFX and Music Pack/Music/SuperHero_original.ogg
-
-#begin SFX and Music Pack/SFX and Music Pack/Music/SuperHero_original_no_Intro.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:SFX and Music Pack/SFX and Music Pack/Music/SuperHero_original_no_Intro.ogg
-
-#begin SFX and Music Pack/SFX and Music Pack/Music/Superhero_violin.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:SFX and Music Pack/SFX and Music Pack/Music/Superhero_violin.ogg
-
-#begin SFX and Music Pack/SFX and Music Pack/Music/Superhero_violin_no_intro.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:SFX and Music Pack/SFX and Music Pack/Music/Superhero_violin_no_intro.ogg
-
-#begin SFX and Music Pack/SFX and Music Pack/SFX/Jump.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:SFX and Music Pack/SFX and Music Pack/SFX/Jump.wav
-
 #begin walk.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -84,4 +54,41 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:walk.png
+
+#begin Jump.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Jump.wav
+
+#begin Superhero_violin_no_intro.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Superhero_violin_no_intro.ogg
+
+#begin SuperHero_original.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:SuperHero_original.ogg
+
+#begin SuperHero_original_no_Intro.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:SuperHero_original_no_Intro.ogg
+
+#begin Superhero_violin.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Superhero_violin.ogg
+
+#begin Arial.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Arial.spritefont
 

@@ -29,13 +29,14 @@ namespace Platformer_Sallway
         public Vector2 Position
         {
             get { return sprite.position; }
+            set { sprite.position = value; } 
         }
 
         public Player(Game1 game)
         {
             this.game = game;
             isFalling = true;
-            isJumping = true;
+            isJumping = false;
             velocity = Vector2.Zero;
             position = Vector2.Zero;
         }
@@ -52,6 +53,7 @@ namespace Platformer_Sallway
 
             jumpSound = content.Load<SoundEffect>("Jump");
             jumpSoundInstance = jumpSound.CreateInstance();
+            jumpSoundInstance.Volume = 0.1f;
 
             sprite.Add(animation, 0, -5);
             sprite.Pause();
@@ -136,8 +138,11 @@ namespace Platformer_Sallway
             velocity += acceleration * deltaTime;
 
             // clamp the velocity so the player doesn't go too fast
-            velocity.X = MathHelper.Clamp(velocity.X,  -Game1.maxVelocity.X, Game1.maxVelocity.X);
-            velocity.Y = MathHelper.Clamp(velocity.Y,  -Game1.maxVelocity.Y, Game1.maxVelocity.Y); 
+            velocity.X = MathHelper.Clamp(velocity.X,
+                -Game1.maxVelocity.X, Game1.maxVelocity.X);
+
+            velocity.Y = MathHelper.Clamp(velocity.Y,
+                -Game1.maxVelocity.Y, Game1.maxVelocity.Y); 
 
             sprite.position += velocity * deltaTime; 
 
@@ -238,4 +243,3 @@ namespace Platformer_Sallway
         
         }
     }
-}

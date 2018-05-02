@@ -19,7 +19,7 @@ namespace Platformer_Sallway
     {
         Song gameMusic;
 
-        public static int tile = 64;
+        public static int tile = 70;
         // abitrary choice for 1m (1 tile = 1 meter)
         public static float meter = tile;
         // very exaggerated gravity (6x)
@@ -78,6 +78,8 @@ namespace Platformer_Sallway
         {
             // TODO: Add your initialization logic here
             player = new Player(this);
+            player.Position = new Vector2(300, 0); 
+            
             base.Initialize();
         }
 
@@ -114,6 +116,7 @@ namespace Platformer_Sallway
             //Loading game music
             gameMusic = Content.Load<Song>("SuperHero_original_no_Intro");
             MediaPlayer.Play(gameMusic);
+            MediaPlayer.Volume = 0.1f;
         }
         
         /// <summary>
