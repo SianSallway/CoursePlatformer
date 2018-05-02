@@ -220,7 +220,7 @@ namespace Platformer_Sallway
                 {
                     // clamp the x position to avoid moving into the platform
                     // we just hit
-                    position.X = game.TileToPixel(tx);
+                    sprite.position.X = game.TileToPixel(tx);
                     this.velocity.X = 0;      // stop horizontal velocity
                 }
             }
@@ -230,7 +230,7 @@ namespace Platformer_Sallway
                 {
                     // clamp the x position to avoid moving into the platform
                     // we just hit
-                    position.X = game.TileToPixel(tx + 1);
+                    sprite.position.X = game.TileToPixel(tx + 1);
                     this.velocity.X = 0;      // stop horizontal velocity
                     sprite.Pause();
                 }
