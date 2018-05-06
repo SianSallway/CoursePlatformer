@@ -26,6 +26,25 @@ namespace Platformer_Sallway
         SoundEffect jumpSound;
         SoundEffectInstance jumpSoundInstance;
 
+        bool autoJump = true;
+
+        public Vector2 Velocity
+        {
+            get { return velocity; }
+        }
+        public Rectangle Bounds
+        {
+            get { return sprite.Bounds; }
+        }
+        public bool IsJumping
+        {
+            get { return isJumping; }
+        }
+        public void JumpOnCollision()
+        {
+            autoJump = true;
+        }
+
         public Vector2 Position
         {
             get { return sprite.position; }
@@ -127,8 +146,9 @@ namespace Platformer_Sallway
                 acceleration.X -= Game1.friction;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Up) == true && this.isJumping == false && falling == false)
+            if ((Keyboard.GetState().IsKeyDown(Keys.Up) == true && this.isJumping == false && falling == false) || autoJump == true)
             {
+                autoJump = false;
                 acceleration.Y -= Game1.jumpImpulse;
                 this.isJumping = true;
                 jumpSoundInstance.Play();

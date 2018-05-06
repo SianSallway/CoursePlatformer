@@ -17,22 +17,26 @@ namespace Platformer_Sallway
         Vector2 velocity = Vector2.Zero;
         float pause = 0;
         bool moveRight = true;
-        static float zombieAcceleration = Game1.acceleration / 5.0f;
-        static Vector2 zombieMaxVelocity = Game1.maxVelocity / 5.0f;
+        static float enemyAcceleration = Game1.acceleration / 5.0f;
+        static Vector2 enemyMaxVelocity = Game1.maxVelocity / 5.0f;
+
         public Vector2 Position
         {
             get { return sprite.position; }
             set { sprite.position = value; }
         }
+
         public Rectangle Bounds
         {
             get { return sprite.Bounds; }
         }
+
         public Enemy(Game1 game)
         {
             this.game = game;
             velocity = Vector2.Zero;
         }
+
         public void Load(ContentManager content)
         {
             AnimatedTexture animation = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
@@ -53,8 +57,8 @@ namespace Platformer_Sallway
                 float ddx = 0; // acceleration
                 int tx = game.PixelToTile(Position.X);
                 int ty = game.PixelToTile(Position.Y);
-                bool nx = (Position.X) % Game1.tile != 0; // zombie overlaps right?
-                bool ny = (Position.Y) % Game1.tile != 0; // zombie overlaps below?
+                bool nx = (Position.X) % Game1.tile != 0; // monster overlaps right?
+                bool ny = (Position.Y) % Game1.tile != 0; // monster overlaps below?
                 bool cell = game.CellAtTileCoord(tx, ty) != 0;
                 bool cellright = game.CellAtTileCoord(tx + 1, ty) != 0;
                 bool celldown = game.CellAtTileCoord(tx, ty + 1) != 0;
@@ -64,7 +68,7 @@ namespace Platformer_Sallway
                 {
                     if (celldiag && !cellright)
                     {
-                        ddx = ddx + zombieAcceleration; // zombie wants to go right
+                        ddx = ddx + enemyAcceleration; // monster wants to go right
                     }
                     else
                     {
@@ -77,7 +81,7 @@ namespace Platformer_Sallway
                 {
                     if (celldown && !cell)
                     {
-                        ddx = ddx - zombieAcceleration; // zombie wants to go left
+                        ddx = ddx - enemyAcceleration; // monster wants to go left
                     }
                     else
                     {
@@ -90,9 +94,10 @@ namespace Platformer_Sallway
                 Position = new Vector2((float)Math.Floor(
                Position.X + (deltaTime * velocity.X)), Position.Y);
                 velocity.X = MathHelper.Clamp(velocity.X + (deltaTime * ddx),
-               -zombieMaxVelocity.X, zombieMaxVelocity.X);
+               -enemyMaxVelocity.X, enemyMaxVelocity.X);
             }
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch);
