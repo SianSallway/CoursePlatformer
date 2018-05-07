@@ -178,6 +178,8 @@ namespace Platformer_Sallway
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            // TODO: Add your update logic here
+            //AIE.StateManager.Update(Content, gameTime);
 
             // Add update logic here.
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -202,6 +204,9 @@ namespace Platformer_Sallway
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            // TODO: Add your drawing code here
+            //AIE.StateManager.Draw(spriteBatch);
 
             Matrix viewMatrix = camera.GetViewMatrix();
             Matrix projectionMatrix = Matrix.CreateOrthographicOffCenter(0,
