@@ -96,6 +96,14 @@ namespace Platformer_Sallway
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+           // TODO: use this.Content to load your game content here
+           // AIE.StateManager.CreateState("SPLASH", new SplashState());
+           // AIE.StateManager.CreateState("GAME", new GameState());
+           // AIE.StateManager.CreateState("GAMEOVER", new GameOverState());
+
+          //  AIE.StateManager.PushState("SPLASH");
+
+
             player.Load(Content);
 
             arialFont = Content.Load<SpriteFont>("Arial");
