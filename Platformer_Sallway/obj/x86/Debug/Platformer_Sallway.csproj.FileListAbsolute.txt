@@ -71,4 +71,4 @@ C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\Arial.xnb
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\chest_closed.xnb
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\chest_opened.xnb
-C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\landMonster.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\goblin.xnb

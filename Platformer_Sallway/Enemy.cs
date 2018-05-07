@@ -40,7 +40,7 @@ namespace Platformer_Sallway
         public void Load(ContentManager content)
         {
             AnimatedTexture animation = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
-            animation.Load(content, "landMonster", 1, 1);
+            animation.Load(content, "goblin", 1, 1);
 
             sprite.Add(animation, 16, 0);
         }
