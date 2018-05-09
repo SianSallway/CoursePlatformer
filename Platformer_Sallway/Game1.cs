@@ -50,6 +50,23 @@ namespace Platformer_Sallway
         TiledMapRenderer mapRenderer = null;
         TiledMapTileLayer collisionLayer;
 
+        //constant values for states
+        const int State_Splash = 0;
+        const int State_Menu = 1;
+        const int State_Playing = 2;
+        const int State_GameOver = 3;
+
+        int gameState = State_Splash;
+
+       /* enum GameState
+        {
+            Splash_State,
+            Menu_State,
+            Playing_State,
+            GameOver_State
+        }
+        GameState GetGameState = GameState.Splash_State; */
+
         public int ScreenWidth
         {
             get
@@ -176,6 +193,18 @@ namespace Platformer_Sallway
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            /* switch (gameState)
+             {
+                 case gameState.DrawSplashState(spriteBatch);
+                     break;
+                 case gameState.DrawMenuState(spriteBatch);
+                     break;
+                 case gameState.DrawPlayingState(spriteBatch);
+                     break;
+                 case gameState.DrawGameOverState(spriteBatch);
+                     break;
+             } */
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             // TODO: Add your update logic here
@@ -196,6 +225,22 @@ namespace Platformer_Sallway
 
             base.Update(gameTime);
         } 
+
+        //Game state functions
+        private void UpdateSplashState(float deltaTime)
+        {
+
+        }
+        private void DrawSplashState(SpriteBatch spriteBatch)
+        {
+
+        }
+        private void UpdateGameState(float deltaTime)
+        {
+
+        }
+
+
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -293,6 +338,7 @@ namespace Platformer_Sallway
                 }
             }
         }
+
         private bool IsColliding(Rectangle rect1, Rectangle rect2)
         {
             if (rect1.X + rect1.Width < rect2.X ||
