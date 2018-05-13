@@ -50,22 +50,22 @@ namespace Platformer_Sallway
         TiledMapRenderer mapRenderer = null;
         TiledMapTileLayer collisionLayer;
 
-        //constant values for states
+       /* //constant values for states
         const int State_Splash = 0;
         const int State_Menu = 1;
         const int State_Playing = 2;
         const int State_GameOver = 3;
 
-        int gameState = State_Splash;
+        int gameState = State_Splash; */
 
-       /* enum GameState
+        enum GameState
         {
             Splash_State,
             Menu_State,
             Playing_State,
             GameOver_State
         }
-        GameState GetGameState = GameState.Splash_State; */
+        GameState GetGameState = GameState.Splash_State; 
 
         public int ScreenWidth
         {
@@ -277,6 +277,7 @@ namespace Platformer_Sallway
 
             base.Draw(gameTime);
         }
+
         public int PixelToTile(float pixelCoord)
         {
             return (int)Math.Floor(pixelCoord / tile);
@@ -293,6 +294,7 @@ namespace Platformer_Sallway
             {
                 return 1;
             }
+            
             // let the player drop of the bottom of the screen (this means death)
             if (pixelCoords.Y > map.HeightInPixels)
             {
@@ -307,6 +309,7 @@ namespace Platformer_Sallway
             {
                 return 1;
             }
+            
             // let the player drop of the bottom of the screen (this means death) 
             if (ty >= map.Height)
             {
