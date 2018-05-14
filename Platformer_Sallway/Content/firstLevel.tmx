@@ -109,16 +109,16 @@
  </layer>
  <objectgroup color="#ff0000" name="Enemies">
   <object id="4" x="534" y="6810"/>
-  <object id="5" x="1030" y="6696"/>
-  <object id="6" x="1788" y="6264"/>
+  <object id="5" x="1030" y="6686.91"/>
+  <object id="6" x="1727.39" y="6282.18"/>
   <object id="43" x="2894" y="6818" width="16" height="18"/>
   <object id="44" x="3880" y="6818" width="20" height="22"/>
   <object id="45" x="4858" y="6810" width="22" height="22"/>
-  <object id="47" x="6464" y="6610" width="26" height="28"/>
+  <object id="47" x="6406.42" y="6610" width="26" height="28"/>
   <object id="49" x="5622" y="6256" width="30" height="22"/>
   <object id="50" x="5064" y="6258" width="28" height="28"/>
-  <object id="51" x="4430" y="6266" width="32" height="22"/>
-  <object id="53" x="3102" y="5900" width="24" height="24"/>
+  <object id="51" x="4430" y="6256.91" width="32" height="22"/>
+  <object id="53" x="3102" y="5969.7" width="24" height="24"/>
  </objectgroup>
  <objectgroup color="#00ffff" name="Goal"/>
  <objectgroup color="#55ff00" name="Collectables">

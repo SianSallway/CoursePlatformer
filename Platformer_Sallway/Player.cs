@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ParticleEffects;
+
 
 namespace Platformer_Sallway
 {
@@ -27,6 +29,9 @@ namespace Platformer_Sallway
         SoundEffectInstance jumpSoundInstance;
 
         bool autoJump = true;
+
+        Emitter sparkEmitter = null;
+        Texture2D sparkTexture = null;
 
         public Vector2 Velocity
         {
@@ -76,6 +81,9 @@ namespace Platformer_Sallway
 
             sprite.Add(animation, 0, -5);
             sprite.Pause();
+
+            sparkTexture = content.Load<Texture2D>("spark");
+            sparkEmitter = new Emitter(sparkTexture, sprite.position);
         }
 
         public void Update(float deltaTime)
@@ -83,6 +91,22 @@ namespace Platformer_Sallway
             UpdateInput(deltaTime);
             sprite.Update(deltaTime);
 
+            if (isJumping == true)
+            {
+                sparkEmitter.position = sprite.position;
+                // Effects change
+
+                sparkEmitter.emissionRate = 10;
+                sparkEmitter.transparency = 0.75f;
+            }
+            else
+            {
+                sparkEmitter.position = new Vector2(0, 0);
+            }
+
+            sparkEmitter.Update(deltaTime);
+
+           
             /* KeyboardState state = Keyboard.GetState();
              int speed = 50;
 
@@ -104,11 +128,15 @@ namespace Platformer_Sallway
                  position.X += speed * deltaTime;
                  hFlipped = false;
              }*/
+
+
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch);
+            sparkEmitter.Draw(spriteBatch);
 
             /*if (hFlipped == true)
                 sprite.Draw(spriteBatch, position, SpriteEffects.FlipHorizontally);

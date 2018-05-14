@@ -35,6 +35,7 @@ namespace Platformer_Sallway
         public static float jumpImpulse = meter * 1500;
 
         List<Enemy> enemies = new List<Enemy>();
+        List<Collectables> collectables = new List<Collectables>();
         Sprite crystal = null;
 
         GraphicsDeviceManager graphics;
@@ -71,7 +72,7 @@ namespace Platformer_Sallway
             Playing_State,
             GameOver_State
         }
-        GameState GetGameState = GameState.Splash_State; 
+        GameState GetGameState = GameState.Splash_State;
 
         public int ScreenWidth
         {
@@ -105,8 +106,8 @@ namespace Platformer_Sallway
         {
             // TODO: Add your initialization logic here
             player = new Player(this);
-            player.Position = new Vector2(300, 0); 
-            
+            player.Position = new Vector2(300, 0);
+
             base.Initialize();
         }
 
@@ -119,12 +120,12 @@ namespace Platformer_Sallway
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-           // TODO: use this.Content to load your game content here
-           // AIE.StateManager.CreateState("SPLASH", new SplashState());
-           // AIE.StateManager.CreateState("GAME", new GameState());
-           // AIE.StateManager.CreateState("GAMEOVER", new GameOverState());
+            // TODO: use this.Content to load your game content here
+            // AIE.StateManager.CreateState("SPLASH", new SplashState());
+            // AIE.StateManager.CreateState("GAME", new GameState());
+            // AIE.StateManager.CreateState("GAMEOVER", new GameOverState());
 
-          //  AIE.StateManager.PushState("SPLASH");
+            //  AIE.StateManager.PushState("SPLASH");
 
 
             player.Load(Content);
@@ -160,29 +161,33 @@ namespace Platformer_Sallway
                         enemies.Add(enemy);
                     }
                 }
-                
-               /* if (layer.Name == "Collectables")
+
+                if (layer.Name == "Collectables")
                 {
                     TiledMapObject obj = layer.Objects[0];
 
                     if (obj != null)
                     {
                         AnimatedTexture anim = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
-                        anim.Load(Content, "chest_closed", 1, 1);
+                        anim.Load(Content, "crystal", 1, 1);
 
-                        crystal = new Sprite();
-                        crystal.Add(anim, 0, 5);
-                        crystal.position = new Vector2(obj.Position.X, obj.Position.Y);
+                        Collectables collecctables = new Collectables(this);
+                        collectables.Load(Content);
+                        collectables.Position = new Vector2(obj.Position.X, obj.Position.Y);
+                        collectables.Add(collectables);
+
+
+
                     }
-                } */
+                }
             }
 
             //Loading game music
             gameMusic = Content.Load<Song>("SuperHero_original_no_Intro");
-           
+
             MediaPlayer.Volume = 0.1f;
         }
-        
+
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// game-specific content.
@@ -197,7 +202,7 @@ namespace Platformer_Sallway
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-       
+
 
         protected override void Update(GameTime gameTime)
         {
@@ -276,7 +281,7 @@ namespace Platformer_Sallway
 
 
             base.Update(gameTime);
-        } 
+        }
 
         void ChangeState(GameState ChangeToState)
         {
@@ -284,7 +289,9 @@ namespace Platformer_Sallway
             RunOnce = false;
         }
 
-        //Game state functions
+
+        // Following unused code is from an attempted to write my own code based of the Asteriods code for Game States.
+        /* //Game state functions
         private void UpdateSplashState(float deltaTime)
         {
 
@@ -297,7 +304,7 @@ namespace Platformer_Sallway
         {
             
 
-        }
+        } */
 
 
 
@@ -313,9 +320,27 @@ namespace Platformer_Sallway
             switch (GetGameState)
             {
                 case GameState.Splash_State:
+
+                    spriteBatch.Begin();
+
+                    // draw all the GUI components in a separte SpriteBatch section 
+                    spriteBatch.DrawString(arialFont, "Splash ", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+
+                    spriteBatch.End();
+
                     break;
+
                 case GameState.Menu_State:
+
+                    spriteBatch.Begin();
+
+                    // draw all the GUI components in a separte SpriteBatch section 
+                    spriteBatch.DrawString(arialFont, "Menu ", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+
+                    spriteBatch.End();
+
                     break;
+
                 case GameState.Playing_State:
 
                     Matrix viewMatrix = camera.GetViewMatrix();
@@ -331,7 +356,13 @@ namespace Platformer_Sallway
                     {
                         e.Draw(spriteBatch);
                     }
-                    //crystal.Draw(spriteBatch);
+                    crystal.Draw(spriteBatch);
+
+                    foreach (Collectables c in collectables)
+                    {
+                        c.Draw(spriteBatch);
+                    }
+                    crystal.Draw(spriteBatch);
 
                     // draw all the GUI components in a separte SpriteBatch section 
                     spriteBatch.DrawString(arialFont, "Score : " + score.ToString(),
@@ -370,7 +401,7 @@ namespace Platformer_Sallway
             {
                 return 1;
             }
-            
+
             // let the player drop of the bottom of the screen (this means death)
             if (pixelCoords.Y > map.HeightInPixels)
             {
@@ -385,7 +416,7 @@ namespace Platformer_Sallway
             {
                 return 1;
             }
-            
+
             // let the player drop of the bottom of the screen (this means death) 
             if (ty >= map.Height)
             {
@@ -415,15 +446,28 @@ namespace Platformer_Sallway
                         // player just died
                     }
                 }
+
             }
+
+            foreach (Collectables c in collectables)
+            {
+                if (IsColliding(player.Bounds, c.Bounds) == true)
+                {
+                    collectables.Remove(c);
+                    break;
+
+                }
+
+            }
+
         }
 
         private bool IsColliding(Rectangle rect1, Rectangle rect2)
         {
             if (rect1.X + rect1.Width < rect2.X ||
-            rect1.X > rect2.X + rect2.Width ||
-            rect1.Y + rect1.Height < rect2.Y ||
-            rect1.Y > rect2.Y + rect2.Height)
+                rect1.X > rect2.X + rect2.Width ||
+                rect1.Y + rect1.Height < rect2.Y ||
+                rect1.Y > rect2.Y + rect2.Height)
             {
                 // these two rectangles are not colliding
                 return false;
