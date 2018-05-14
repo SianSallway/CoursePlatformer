@@ -192,9 +192,9 @@ namespace Platformer_Sallway
             int tx = game.PixelToTile(position.X);
             int ty = game.PixelToTile(position.Y);
             // nx = true if player overlaps right
-            bool nx = (position.X) % Game1.tile != 0;
+            bool nx = (sprite.position.X) % Game1.tile != 0;
             // ny = true if player overlaps below
-            bool ny = (position.Y) % Game1.tile != 0;
+            bool ny = (sprite.position.Y) % Game1.tile != 0;
             bool cell = game.CellAtTileCoord(tx, ty) != 0;
             bool cellright = game.CellAtTileCoord(tx + 1, ty) != 0;
             bool celldown = game.CellAtTileCoord(tx, ty + 1) != 0;
@@ -208,7 +208,7 @@ namespace Platformer_Sallway
                 if ((celldown && !cell) || (celldiag && !cellright && nx))
                 {
                     // clamp the y position to avoid falling into platform below                 
-                    position.Y = game.TileToPixel(ty);
+                    sprite.position.Y = game.TileToPixel(ty);
                     this.velocity.Y = 0;        // stop downward velocity
                     this.isFalling = false;     // no longer falling
                     this.isJumping = false;     // (or jumping)
@@ -220,7 +220,7 @@ namespace Platformer_Sallway
                 if ((cell && !celldown) || (cellright && !celldiag && nx))
                 {
                     // clamp the y position to avoid jumping into platform above
-                    position.Y = game.TileToPixel(ty + 1);
+                    sprite.position.Y = game.TileToPixel(ty + 1);
                     this.velocity.Y = 0;
                     sprite.Pause();
                     // stop upward velocity

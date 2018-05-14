@@ -50,7 +50,10 @@ namespace Platformer_Sallway
         TiledMapRenderer mapRenderer = null;
         TiledMapTileLayer collisionLayer;
 
-       /* //constant values for states
+      
+        // Following unused code was apart of an attempt to modify code used in Asteriods to implement Game States.
+        
+        /* //constant values for states
         const int State_Splash = 0;
         const int State_Menu = 1;
         const int State_Playing = 2;
@@ -193,35 +196,44 @@ namespace Platformer_Sallway
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            /* switch (gameState)
-             {
-                 case gameState.DrawSplashState(spriteBatch);
-                     break;
-                 case gameState.DrawMenuState(spriteBatch);
-                     break;
-                 case gameState.DrawPlayingState(spriteBatch);
-                     break;
-                 case gameState.DrawGameOverState(spriteBatch);
-                     break;
-             } */
+            //deltaTime
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+                Exit(); // Exit Game.
+
+            switch (GetGameState)
+            {
+                case GameState.Splash_State:
+                    break;
+                case GameState.Menu_State:
+                    break;
+                case GameState.Playing_State:
+
+                    player.Update(deltaTime);
+
+                    foreach (Enemy e in enemies)
+                    {
+                        e.Update(deltaTime);
+                    }
+
+                    camera.Position = player.Position - new Vector2(ScreenWidth / 2, ScreenHeight / 2);
+
+                    CheckCollisions();
+
+                    break;
+                case GameState.GameOver_State:
+                default:
+                    break;
+            }
+
+
             // TODO: Add your update logic here
             //AIE.StateManager.Update(Content, gameTime);
 
             // Add update logic here.
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            player.Update(deltaTime);
 
-            foreach (Enemy e in enemies)
-            {
-                e.Update(deltaTime);
-            }
 
-            camera.Position = player.Position - new Vector2(ScreenWidth / 2, ScreenHeight / 2);
-
-            CheckCollisions();
 
             base.Update(gameTime);
         } 
@@ -237,6 +249,7 @@ namespace Platformer_Sallway
         }
         private void UpdateGameState(float deltaTime)
         {
+            
 
         }
 
@@ -248,31 +261,48 @@ namespace Platformer_Sallway
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            switch (GetGameState)
+            {
+                case GameState.Splash_State:
+                    break;
+                case GameState.Menu_State:
+                    break;
+                case GameState.Playing_State:
+
+                    Matrix viewMatrix = camera.GetViewMatrix();
+                    Matrix projectionMatrix = Matrix.CreateOrthographicOffCenter(0,
+                        GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 0, 0f, -1f);
+
+                    spriteBatch.Begin(transformMatrix: viewMatrix);
+
+                    mapRenderer.Draw(map, ref viewMatrix, ref projectionMatrix);
+                    player.Draw(spriteBatch);
+
+                    foreach (Enemy e in enemies)
+                    {
+                        e.Draw(spriteBatch);
+                    }
+                    crystal.Draw(spriteBatch);
+
+                    // draw all the GUI components in a separte SpriteBatch section 
+                    spriteBatch.DrawString(arialFont, "Score : " + score.ToString(),
+                        new Vector2(20, 20), Color.Green);
+
+                    spriteBatch.End();
+                    break;
+
+                case GameState.GameOver_State:
+                default:
+                    break;
+            }
 
             // TODO: Add your drawing code here
             //AIE.StateManager.Draw(spriteBatch);
 
-            Matrix viewMatrix = camera.GetViewMatrix();
-            Matrix projectionMatrix = Matrix.CreateOrthographicOffCenter(0,
-                GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 0, 0f, -1f);
 
-            spriteBatch.Begin(transformMatrix: viewMatrix);
-
-            mapRenderer.Draw(map, ref viewMatrix, ref projectionMatrix);
-            player.Draw(spriteBatch);
-
-            foreach (Enemy e in enemies)
-            {
-                e.Draw(spriteBatch);
-            }
-            crystal.Draw(spriteBatch);
-
-            // draw all the GUI components in a separte SpriteBatch section 
-            spriteBatch.DrawString(arialFont, "Score : " + score.ToString(),
-                new Vector2(20, 20), Color.Green);
-
-            spriteBatch.End();
 
 
             base.Draw(gameTime);
