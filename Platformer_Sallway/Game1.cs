@@ -168,15 +168,11 @@ namespace Platformer_Sallway
 
                     if (obj != null)
                     {
-                        AnimatedTexture anim = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
-                        anim.Load(Content, "crystal", 1, 1);
-
-                        Collectables collecctables = new Collectables(this);
+                      
+                        Collectables collectables = new Collectables(this);
                         collectables.Load(Content);
                         collectables.Position = new Vector2(obj.Position.X, obj.Position.Y);
                         collectables.Add(collectables);
-
-
 
                     }
                 }
