@@ -50,9 +50,12 @@ namespace Platformer_Sallway
         TiledMapRenderer mapRenderer = null;
         TiledMapTileLayer collisionLayer;
 
-      
+        bool RunOnce = false;
+        float Timer = 3f;
+
+
         // Following unused code was apart of an attempt to modify code used in Asteriods to implement Game States.
-        
+
         /* //constant values for states
         const int State_Splash = 0;
         const int State_Menu = 1;
@@ -158,7 +161,7 @@ namespace Platformer_Sallway
                     }
                 }
                 
-                if (layer.Name == "Collectables")
+               /* if (layer.Name == "Collectables")
                 {
                     TiledMapObject obj = layer.Objects[0];
 
@@ -171,12 +174,12 @@ namespace Platformer_Sallway
                         crystal.Add(anim, 0, 5);
                         crystal.position = new Vector2(obj.Position.X, obj.Position.Y);
                     }
-                }
+                } */
             }
 
             //Loading game music
             gameMusic = Content.Load<Song>("SuperHero_original_no_Intro");
-            MediaPlayer.Play(gameMusic);
+           
             MediaPlayer.Volume = 0.1f;
         }
         
@@ -194,6 +197,8 @@ namespace Platformer_Sallway
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
+       
+
         protected override void Update(GameTime gameTime)
         {
             //deltaTime
@@ -205,10 +210,44 @@ namespace Platformer_Sallway
             switch (GetGameState)
             {
                 case GameState.Splash_State:
+
+                    if (RunOnce != true)
+                    {
+                        Timer = 3f;
+                        RunOnce = true;
+                    }
+
+                    Timer -= deltaTime;
+                    if (Timer <= 0)
+                    {
+                        ChangeState(GameState.Menu_State);
+                    }
+
                     break;
+
                 case GameState.Menu_State:
+
+                    if (RunOnce != true)
+                    {
+                        Timer = 3f;
+                        RunOnce = true;
+                    }
+
+                    Timer -= deltaTime;
+                    if (Timer <= 0)
+                    {
+                        ChangeState(GameState.Playing_State);
+                    }
+
                     break;
+
                 case GameState.Playing_State:
+
+                    if (RunOnce != true)
+                    {
+                        MediaPlayer.Play(gameMusic);
+                        RunOnce = true;
+                    }
 
                     player.Update(deltaTime);
 
@@ -222,6 +261,7 @@ namespace Platformer_Sallway
                     CheckCollisions();
 
                     break;
+
                 case GameState.GameOver_State:
                 default:
                     break;
@@ -237,6 +277,12 @@ namespace Platformer_Sallway
 
             base.Update(gameTime);
         } 
+
+        void ChangeState(GameState ChangeToState)
+        {
+            GetGameState = ChangeToState;
+            RunOnce = false;
+        }
 
         //Game state functions
         private void UpdateSplashState(float deltaTime)
@@ -285,7 +331,7 @@ namespace Platformer_Sallway
                     {
                         e.Draw(spriteBatch);
                     }
-                    crystal.Draw(spriteBatch);
+                    //crystal.Draw(spriteBatch);
 
                     // draw all the GUI components in a separte SpriteBatch section 
                     spriteBatch.DrawString(arialFont, "Score : " + score.ToString(),

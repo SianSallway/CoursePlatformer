@@ -57,7 +57,7 @@ namespace Platformer_Sallway
             isFalling = true;
             isJumping = false;
             velocity = Vector2.Zero;
-            position = Vector2.Zero;
+            sprite.position = Vector2.Zero;
         }
 
         bool hFlipped = false;
@@ -189,8 +189,8 @@ namespace Platformer_Sallway
             // This means we can short-circuit and avoid building a general purpose
             // collision detection engine by simply looking at the 1 to 4 cells that
             // the player occupies:
-            int tx = game.PixelToTile(position.X);
-            int ty = game.PixelToTile(position.Y);
+            int tx = game.PixelToTile(sprite.position.X);
+            int ty = game.PixelToTile(sprite.position.Y);
             // nx = true if player overlaps right
             bool nx = (sprite.position.X) % Game1.tile != 0;
             // ny = true if player overlaps below
