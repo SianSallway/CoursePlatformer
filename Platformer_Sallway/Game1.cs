@@ -141,6 +141,11 @@ namespace Platformer_Sallway
             map = Content.Load<TiledMap>("firstLevel");
             mapRenderer = new TiledMapRenderer(GraphicsDevice);
 
+            //Loading game music
+            gameMusic = Content.Load<Song>("SuperHero_original_no_Intro");
+
+            MediaPlayer.Volume = 0.1f;
+
             foreach (TiledMapTileLayer layer in map.TileLayers)
             {
                 if (layer.Name == "Playable")
@@ -164,9 +169,9 @@ namespace Platformer_Sallway
 
                 if (layer.Name == "Collectables")
                 {
-                    TiledMapObject obj = layer.Objects[0];
+                    //TiledMapObject obj = layer.Objects[0];
 
-                    if (obj != null)
+                    foreach (TiledMapObject obj in layer.Objects)
                     {
                       
                         Collectables collectables = new Collectables(this);
@@ -178,10 +183,7 @@ namespace Platformer_Sallway
                 }
             }
 
-            //Loading game music
-            gameMusic = Content.Load<Song>("SuperHero_original_no_Intro");
 
-            MediaPlayer.Volume = 0.1f;
         }
 
         /// <summary>
@@ -352,7 +354,7 @@ namespace Platformer_Sallway
                     {
                         e.Draw(spriteBatch);
                     }
-                    crystal.Draw(spriteBatch);
+  
 
                     foreach (Collectables c in collectables)
                     {
