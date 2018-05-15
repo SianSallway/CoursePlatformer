@@ -35,8 +35,8 @@ namespace Platformer_Sallway
         public static float jumpImpulse = meter * 1500;
 
         List<Enemy> enemies = new List<Enemy>();
-        List<Collectables> collectables = new List<Collectables>();
-        Sprite crystal = null;
+        List<Collectable> collectables = new List<Collectable>();
+        Collectable crystal = null;
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -174,10 +174,10 @@ namespace Platformer_Sallway
                     foreach (TiledMapObject obj in layer.Objects)
                     {
                       
-                        Collectables collectables = new Collectables(this);
-                        collectables.Load(Content);
-                        collectables.Position = new Vector2(obj.Position.X, obj.Position.Y);
-                        collectables.Add(collectables);
+                        Collectable collectable = new Collectable(this);
+                        collectable.Load(Content);
+                        collectable.Position = new Vector2(obj.Position.X, obj.Position.Y);
+                        collectables.Add(collectable);
 
                     }
                 }
@@ -356,15 +356,15 @@ namespace Platformer_Sallway
                     }
   
 
-                    foreach (Collectables c in collectables)
+                    foreach (Collectable c in collectables)
                     {
                         c.Draw(spriteBatch);
                     }
-                    crystal.Draw(spriteBatch);
+                    //crystal.Draw(spriteBatch);
 
                     // draw all the GUI components in a separte SpriteBatch section 
                     spriteBatch.DrawString(arialFont, "Score : " + score.ToString(),
-                        new Vector2(20, 20), Color.Green);
+                        camera.Position + new Vector2(20, 20), Color.Green);
 
                     spriteBatch.End();
                     break;
@@ -447,11 +447,12 @@ namespace Platformer_Sallway
 
             }
 
-            foreach (Collectables c in collectables)
+            foreach (Collectable c in collectables)
             {
                 if (IsColliding(player.Bounds, c.Bounds) == true)
                 {
                     collectables.Remove(c);
+                    score++;
                     break;
 
                 }

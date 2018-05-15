@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Platformer_Sallway
 {
-    class Collectables
+    class Collectable
     {
         Sprite sprite = new Sprite();
         // keep a reference to the Game object to check for collisions on the map
@@ -26,7 +26,7 @@ namespace Platformer_Sallway
             get { return sprite.Bounds; }
         }
 
-        public Collectables(Game1 game)
+        public Collectable(Game1 game)
         {
             this.game = game;
             
