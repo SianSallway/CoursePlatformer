@@ -45,6 +45,9 @@ namespace Platformer_Sallway
 
         SpriteFont arialFont;
         int score = 0;
+        //int lives = 3;
+
+        //Texture2D heart = null;
 
         Camera2D camera = null;
         TiledMap map = null;
@@ -131,6 +134,7 @@ namespace Platformer_Sallway
             player.Load(Content);
 
             arialFont = Content.Load<SpriteFont>("Arial");
+            //heart = Content.Load<Texture2D>("hearts");
 
             BoxingViewportAdapter viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice,
               ScreenWidth, ScreenHeight);
@@ -364,7 +368,12 @@ namespace Platformer_Sallway
 
                     // draw all the GUI components in a separte SpriteBatch section 
                     spriteBatch.DrawString(arialFont, "Score : " + score.ToString(),
-                        camera.Position + new Vector2(20, 20), Color.Green);
+                        camera.Position + new Vector2(20, 60), Color.Green);
+
+                   /* for (int i = 0 < lives; i++)
+                    {
+                        spriteBatch.Draw(heart, new Vector2(ScreenWidth - 80 - i * 20, 20), Color.White);
+                    } */
 
                     spriteBatch.End();
                     break;
