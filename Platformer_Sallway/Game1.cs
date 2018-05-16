@@ -58,8 +58,8 @@ namespace Platformer_Sallway
 
         Rectangle GoalRec = new Rectangle(6780, 4000, 160, 300);
 
-        Sprite SplashSprite;
-        Sprite MenuSprite;
+        Texture2D SplashSprite;
+        Texture2D MenuSprite;
 
         bool RunOnce = false;
         float Timer = 3f;
@@ -143,8 +143,9 @@ namespace Platformer_Sallway
 
             arialFont = Content.Load<SpriteFont>("Arial");
             heart = Content.Load<Texture2D>("hearts");
-            //SplashSprite = Content.Load<Texture2D>("splashscreen");
-            //MenuSprite = Content.Load<Texture2D>("Menuscreen");
+            SplashSprite = Content.Load<Texture2D>("splashscreen");
+            MenuSprite = Content.Load<Texture2D>("Menuscreen");
+          
 
             BoxingViewportAdapter viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice,
               ScreenWidth, ScreenHeight);
@@ -386,10 +387,10 @@ namespace Platformer_Sallway
 
                     spriteBatch.Begin();
 
-                    spriteBatch.DrawString(arialFont, "Splash", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
-                    //spriteBatch.Draw(SplashSprite, new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+                    //spriteBatch.DrawString(arialFont, "Splash", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+                    spriteBatch.Draw(SplashSprite, new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.White);
 
-
+                    
 
                     spriteBatch.End();
 
@@ -400,7 +401,8 @@ namespace Platformer_Sallway
                     spriteBatch.Begin();
 
                     // draw all the GUI components in a separte SpriteBatch section 
-                    spriteBatch.DrawString(arialFont, "Menu ", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+                    //spriteBatch.DrawString(arialFont, "Menu ", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+                    spriteBatch.Draw(MenuSprite, new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.White);
 
                     spriteBatch.End();
 
