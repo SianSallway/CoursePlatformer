@@ -68,3 +68,7 @@ C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\flare.xnb
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\SuperHero_edited.xnb
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\SuperHero_edited.wma
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\Aura.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\princess.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\Menuscreen.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\splashscreen.xnb

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/walk.png</SourceFile>
-  <SourceTime>2018-04-18T19:32:03.2007612+10:00</SourceTime>
-  <DestFile>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/bin/Windows/walk.xnb</DestFile>
-  <DestTime>2018-05-16T14:54:36.4926164+10:00</DestTime>
+  <SourceFile>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/Menuscreen.PNG</SourceFile>
+  <SourceTime>2018-05-16T18:07:47.1985687+10:00</SourceTime>
+  <DestFile>C:/Users/Sian/Documents/GitHub/CoursePlatformer/Platformer_Sallway/Content/bin/Windows/Menuscreen.xnb</DestFile>
+  <DestTime>2018-05-16T18:23:43.7973062+10:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-02T02:05:36+11:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

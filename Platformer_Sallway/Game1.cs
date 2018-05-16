@@ -37,7 +37,8 @@ namespace Platformer_Sallway
 
         List<Enemy> enemies = new List<Enemy>();
         List<Collectable> collectables = new List<Collectable>();
-        Collectable crystal = null;
+        //List<Goal> goal = new List<Goal>();
+        //Collectable crystal = null;
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -46,14 +47,19 @@ namespace Platformer_Sallway
 
         SpriteFont arialFont;
         int score = 0;
-        //int lives = 3;
+        int lives = 3;
 
-        //Texture2D heart = null;
+        Texture2D heart = null;
 
         Camera2D camera = null;
         TiledMap map = null;
         TiledMapRenderer mapRenderer = null;
         TiledMapTileLayer collisionLayer;
+
+        Rectangle GoalRec = new Rectangle(6780, 4000, 160, 300);
+
+        Sprite SplashSprite;
+        Sprite MenuSprite;
 
         bool RunOnce = false;
         float Timer = 3f;
@@ -74,7 +80,8 @@ namespace Platformer_Sallway
             Splash_State,
             Menu_State,
             Playing_State,
-            GameOver_State
+            GameOver_State,
+            GameWin_State
         }
         GameState GetGameState = GameState.Splash_State;
 
@@ -110,7 +117,7 @@ namespace Platformer_Sallway
         {
             // TODO: Add your initialization logic here
             player = new Player(this);
-            player.Position = new Vector2(300, 0);
+            player.Position = new Vector2(300, 900);
 
             base.Initialize();
         }
@@ -135,7 +142,9 @@ namespace Platformer_Sallway
             player.Load(Content);
 
             arialFont = Content.Load<SpriteFont>("Arial");
-            //heart = Content.Load<Texture2D>("hearts");
+            heart = Content.Load<Texture2D>("hearts");
+            //SplashSprite = Content.Load<Texture2D>("splashscreen");
+            //MenuSprite = Content.Load<Texture2D>("Menuscreen");
 
             BoxingViewportAdapter viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice,
               ScreenWidth, ScreenHeight);
@@ -149,7 +158,7 @@ namespace Platformer_Sallway
             //Loading game music
             gameMusic = Content.Load<Song>("SuperHero_edited");
             //playingMusic = Content.Load<Song>("SuperHero_original");
-
+            MediaPlayer.Play(gameMusic);
             MediaPlayer.Volume = 0.1f;
 
             foreach (TiledMapTileLayer layer in map.TileLayers)
@@ -187,6 +196,22 @@ namespace Platformer_Sallway
 
                     }
                 }
+
+               /* if (layer.Name == "Goal")
+                {
+                    //TiledMapObject obj = layer.Objects[0];
+
+                    foreach (TiledMapObject obj in layer.Objects)
+                    {
+
+                        Goal goal = new Goal(this);
+                        goal.Load(Content);
+                        goal.Position = new Vector2(obj.Position.X, obj.Position.Y);
+                        goal.Add(goal);
+
+                    }
+                } */
+
             }
 
 
@@ -248,16 +273,20 @@ namespace Platformer_Sallway
                         ChangeState(GameState.Playing_State);
                     }
 
+
+
                     break;
 
                 case GameState.Playing_State:
 
                     if (RunOnce != true)
                     {
-                        MediaPlayer.Play(gameMusic);
-                        //MediaPlayer.Play(playingMusic);
+
+ 
                         RunOnce = true;
                     }
+
+                    Console.WriteLine(player.Position); 
 
                     player.Update(deltaTime);
 
@@ -274,10 +303,34 @@ namespace Platformer_Sallway
                     camera.Position = player.Position - new Vector2(ScreenWidth / 2, ScreenHeight / 2);
 
                     CheckCollisions();
+                    
+
+                   // Console.WriteLine(player.Position)
 
                     break;
 
                 case GameState.GameOver_State:
+
+                    if (RunOnce != true)
+                    {
+                        IsMouseVisible = true;
+
+                        RunOnce = true;
+                    }
+
+
+                    break;
+
+                case GameState.GameWin_State:
+
+                    if (RunOnce != true)
+                    {
+                        IsMouseVisible = true;
+
+                        RunOnce = true;
+                    }
+
+                    break;
                 default:
                     break;
             }
@@ -333,9 +386,10 @@ namespace Platformer_Sallway
 
                     spriteBatch.Begin();
 
-                    // draw all the GUI components in a separte SpriteBatch section 
-                    spriteBatch.DrawString(arialFont, "Splash ", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
-                    
+                    spriteBatch.DrawString(arialFont, "Splash", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+                    //spriteBatch.Draw(SplashSprite, new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+
+
 
                     spriteBatch.End();
 
@@ -373,21 +427,47 @@ namespace Platformer_Sallway
                     {
                         c.Draw(spriteBatch);
                     }
+
+
+
+                    spriteBatch.DrawRectangle(GoalRec, Color.Red, 5f);
                     
 
                     // draw all the GUI components in a separte SpriteBatch section 
                     spriteBatch.DrawString(arialFont, "Score : " + score.ToString(),
                         camera.Position + new Vector2(20, 60), Color.Green);
 
-                   /* for (int i = 0 < lives; i++)
+                    for (int i = 0; i < lives; i++)
                     {
-                        spriteBatch.Draw(heart, new Vector2(ScreenWidth - 80 - i * 20, 20), Color.White);
-                    } */
+                        spriteBatch.Draw(heart, camera.Position + new Vector2(20, 40), Color.White);
+                        spriteBatch.Draw(heart, camera.Position + new Vector2(35, 40), Color.White);
+                        spriteBatch.Draw(heart, camera.Position + new Vector2(52, 40), Color.White);
+                    } 
 
                     spriteBatch.End();
                     break;
 
                 case GameState.GameOver_State:
+
+                    spriteBatch.Begin();
+
+                    spriteBatch.DrawString(arialFont, "You have died", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+
+                    spriteBatch.End();
+
+
+                    break;
+
+                case GameState.GameWin_State:
+
+                    spriteBatch.Begin();
+ 
+                    spriteBatch.DrawString(arialFont, "You Won", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+
+                    spriteBatch.End();
+
+
+                    break;
                 default:
                     break;
             }
@@ -410,6 +490,8 @@ namespace Platformer_Sallway
         {
             return tile * tileCoord;
         }
+
+        // I'm behind on the rectangle/goal
 
         public int CellAtPixelCoord(Vector2 pixelCoords)
         {
@@ -436,7 +518,7 @@ namespace Platformer_Sallway
             // let the player drop of the bottom of the screen (this means death) 
             if (ty >= map.Height)
             {
-                return 0;
+                return 0; 
             }
 
             TiledMapTile? tile;
@@ -460,6 +542,7 @@ namespace Platformer_Sallway
                     else
                     {
                         // player just died
+                       
                     }
                 }
 
@@ -469,17 +552,27 @@ namespace Platformer_Sallway
             {
                 if (IsColliding(player.Bounds, c.Bounds) == true)
                 {
-                    //flareTexture.Draw(spriteBatch);
                     collectables.Remove(c);
                     score++;
-                   
+
+                   /* Poof poof = new Poof(this);
+                    poof.Load(Content);
+                    poof.Position - new Vector2(c.Position.X, c.Position.Y);
+                    poof.Add(poof); */
+
                     break;
 
                 }
 
-            }
+            } 
 
-        }
+
+            if (IsColliding(player.Bounds, GoalRec) == true) 
+            {
+                ChangeState(GameState.GameWin_State);
+            } 
+
+        } 
 
         private bool IsColliding(Rectangle rect1, Rectangle rect2)
         {

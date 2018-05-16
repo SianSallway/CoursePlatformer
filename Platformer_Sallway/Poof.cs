@@ -8,17 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using ParticleEffects;
 
+
 namespace Platformer_Sallway
 {
-    class Collectable
+    class Poof
     {
         Sprite sprite = new Sprite();
-        // keep a reference to the Game object to check for collisions on the map
+
         Game1 game = null;
 
-
-
-
+        Emitter flareEmitter = null;
+        Texture2D flareTexture = null;
 
         public Vector2 Position
         {
@@ -31,21 +31,19 @@ namespace Platformer_Sallway
             get { return sprite.Bounds; }
         }
 
-        public Collectable(Game1 game)
+        public Poof(Game1 game)
         {
             this.game = game;
-            
+
         }
 
         public void Load(ContentManager content)
         {
-            AnimatedTexture animation = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
-            animation.Load(content, "crystal", 1, 1);
+           // AnimatedTexture animation = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
+           //animation.Load(content, "crystal", 1, 1);
 
-            sprite.Add(animation, 1, 0);
-
-            //flareTexture = content.Load<Texture2D>("flare");
-            //flareEmitter = new Emitter(flareTexture, sprite.position);
+            flareTexture = content.Load<Texture2D>("flare");
+            flareEmitter = new Emitter(flareTexture, sprite.position);
         }
 
         public void Update(float deltaTime)
@@ -53,17 +51,15 @@ namespace Platformer_Sallway
             sprite.Update(deltaTime);
 
             // update the flare particle emitter
-           // flareEmitter.position = sprite.position;
-           // flareEmitter.Update(deltaTime);
+            flareEmitter.position = sprite.position;
+            flareEmitter.Update(deltaTime);
 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch);
-            //flareEmitter.Draw(spriteBatch);
+            flareEmitter.Draw(spriteBatch);
         }
-
     }
-
 }

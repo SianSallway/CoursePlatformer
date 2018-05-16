@@ -10,14 +10,14 @@ using ParticleEffects;
 
 namespace Platformer_Sallway
 {
-    class Collectable
+    class Goal
     {
         Sprite sprite = new Sprite();
         // keep a reference to the Game object to check for collisions on the map
         Game1 game = null;
 
-
-
+        Emitter portalEmitter = null;
+        Texture2D portalTexture = null;
 
 
         public Vector2 Position
@@ -31,21 +31,21 @@ namespace Platformer_Sallway
             get { return sprite.Bounds; }
         }
 
-        public Collectable(Game1 game)
+        public Goal(Game1 game)
         {
             this.game = game;
-            
+
         }
 
         public void Load(ContentManager content)
         {
             AnimatedTexture animation = new AnimatedTexture(Vector2.Zero, 0, 1, 1);
-            animation.Load(content, "crystal", 1, 1);
+            animation.Load(content, "princess", 1, 1);
 
             sprite.Add(animation, 1, 0);
 
-            //flareTexture = content.Load<Texture2D>("flare");
-            //flareEmitter = new Emitter(flareTexture, sprite.position);
+            portalTexture = content.Load<Texture2D>("Aura");
+            portalEmitter = new Emitter(portalTexture, sprite.position);
         }
 
         public void Update(float deltaTime)
@@ -53,17 +53,17 @@ namespace Platformer_Sallway
             sprite.Update(deltaTime);
 
             // update the flare particle emitter
-           // flareEmitter.position = sprite.position;
-           // flareEmitter.Update(deltaTime);
+           portalEmitter.position = sprite.position;
+           portalEmitter.Update(deltaTime);
 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch);
-            //flareEmitter.Draw(spriteBatch);
+            portalEmitter.Draw(spriteBatch);
         }
 
-    }
 
+    }
 }
