@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ParticleEffects;
 
 namespace Platformer_Sallway
 {
@@ -13,7 +14,12 @@ namespace Platformer_Sallway
     {
         Sprite sprite = new Sprite();
         // keep a reference to the Game object to check for collisions on the map
-        Game1 game = null;      
+        Game1 game = null;
+
+        Emitter flareEmitter = null;
+        Texture2D flareTexture = null;
+
+
 
         public Vector2 Position
         {
@@ -38,17 +44,25 @@ namespace Platformer_Sallway
             animation.Load(content, "crystal", 1, 1);
 
             sprite.Add(animation, 1, 0);
+
+            flareTexture = content.Load<Texture2D>("flare");
+            flareEmitter = new Emitter(flareTexture, sprite.position);
         }
 
         public void Update(float deltaTime)
         {
             sprite.Update(deltaTime);
- 
+
+            // update the flare particle emitter
+            flareEmitter.position = sprite.position;
+            flareEmitter.Update(deltaTime);
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch);
+            flareEmitter.Draw(spriteBatch);
         }
 
     }

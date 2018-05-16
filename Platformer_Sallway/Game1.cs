@@ -19,6 +19,7 @@ namespace Platformer_Sallway
     public class Game1 : Game
     {
         Song gameMusic;
+        //Song playingMusic;
 
         public static int tile = 70;
         // abitrary choice for 1m (1 tile = 1 meter)
@@ -146,7 +147,8 @@ namespace Platformer_Sallway
             mapRenderer = new TiledMapRenderer(GraphicsDevice);
 
             //Loading game music
-            gameMusic = Content.Load<Song>("SuperHero_original_no_Intro");
+            gameMusic = Content.Load<Song>("SuperHero_edited");
+            //playingMusic = Content.Load<Song>("SuperHero_original");
 
             MediaPlayer.Volume = 0.1f;
 
@@ -253,6 +255,7 @@ namespace Platformer_Sallway
                     if (RunOnce != true)
                     {
                         MediaPlayer.Play(gameMusic);
+                        //MediaPlayer.Play(playingMusic);
                         RunOnce = true;
                     }
 
@@ -261,6 +264,11 @@ namespace Platformer_Sallway
                     foreach (Enemy e in enemies)
                     {
                         e.Update(deltaTime);
+                    }
+
+                    foreach (Collectable c in collectables)
+                    {
+                        c.Update(deltaTime);
                     }
 
                     camera.Position = player.Position - new Vector2(ScreenWidth / 2, ScreenHeight / 2);
@@ -327,6 +335,7 @@ namespace Platformer_Sallway
 
                     // draw all the GUI components in a separte SpriteBatch section 
                     spriteBatch.DrawString(arialFont, "Splash ", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+                    
 
                     spriteBatch.End();
 
@@ -364,7 +373,7 @@ namespace Platformer_Sallway
                     {
                         c.Draw(spriteBatch);
                     }
-                    //crystal.Draw(spriteBatch);
+                    
 
                     // draw all the GUI components in a separte SpriteBatch section 
                     spriteBatch.DrawString(arialFont, "Score : " + score.ToString(),
@@ -460,8 +469,10 @@ namespace Platformer_Sallway
             {
                 if (IsColliding(player.Bounds, c.Bounds) == true)
                 {
+                    //flareTexture.Draw(spriteBatch);
                     collectables.Remove(c);
                     score++;
+                   
                     break;
 
                 }

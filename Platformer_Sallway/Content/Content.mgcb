@@ -61,12 +61,6 @@
 /processorParam:Quality=Best
 /build:Jump.wav
 
-#begin SuperHero_original_no_Intro.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:SuperHero_original_no_Intro.ogg
-
 #begin Arial.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -121,4 +115,22 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:hearts.png
+
+#begin flare.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:flare.png
+
+#begin SuperHero_edited.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:SuperHero_edited.ogg
 
