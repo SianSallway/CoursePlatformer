@@ -529,6 +529,22 @@ namespace Platformer_Sallway
 
         }
 
+        private bool contact;
+        private float resetTime = 1;
+        private void ResetContact(float dt)
+        {
+            if (contact == true)
+            {
+                resetTime -= dt;
+                if(resetTime <= 0)
+                {
+                    contact = false;
+                    resetTime = 1;
+                }
+            }
+        }
+
+
         private void CheckCollisions()
         {
             foreach (Enemy e in enemies)
@@ -541,9 +557,10 @@ namespace Platformer_Sallway
                         enemies.Remove(e);
                         break;
                     }
-                    else
+                    else if(contact == false)
                     {
-                        // player just died
+                        lives--;
+                        contact = true;
                        
                     }
                 }
