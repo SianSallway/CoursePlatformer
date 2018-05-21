@@ -21,6 +21,7 @@ namespace Platformer_Sallway
         bool isFalling = true;
         bool isJumping = false;
 
+
         Vector2 velocity = Vector2.Zero;
         Vector2 position = Vector2.Zero;
 

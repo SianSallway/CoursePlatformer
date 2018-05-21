@@ -64,6 +64,8 @@ namespace Platformer_Sallway
         bool RunOnce = false;
         float Timer = 3f;
 
+        bool playerAlive = true;
+
 
         // Following unused code was apart of an attempt to modify code used in Asteriods to implement Game States.
 
@@ -264,7 +266,7 @@ namespace Platformer_Sallway
 
                     if (RunOnce != true)
                     {
-                        Timer = 3f;
+                        Timer = 5f;
                         RunOnce = true;
                     }
 
@@ -388,7 +390,7 @@ namespace Platformer_Sallway
                     spriteBatch.Begin();
 
                     //spriteBatch.DrawString(arialFont, "Splash", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
-                    spriteBatch.Draw(SplashSprite, new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.White);
+                    spriteBatch.Draw(SplashSprite, new Vector2(100, 50), Color.White);
 
                     
 
@@ -402,7 +404,7 @@ namespace Platformer_Sallway
 
                     // draw all the GUI components in a separte SpriteBatch section 
                     //spriteBatch.DrawString(arialFont, "Menu ", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
-                    spriteBatch.Draw(MenuSprite, new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.White);
+                    spriteBatch.Draw(MenuSprite, new Vector2(100, 50), Color.White);
 
                     spriteBatch.End();
 
@@ -453,7 +455,7 @@ namespace Platformer_Sallway
 
                     spriteBatch.Begin();
 
-                    spriteBatch.DrawString(arialFont, "You have died", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+                    spriteBatch.DrawString(arialFont, "You have died", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Black);
 
                     spriteBatch.End();
 
@@ -464,7 +466,7 @@ namespace Platformer_Sallway
 
                     spriteBatch.Begin();
  
-                    spriteBatch.DrawString(arialFont, "You Won", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Green);
+                    spriteBatch.DrawString(arialFont, "You Won", new Vector2(ScreenHeight / 2, ScreenWidth / 2), Color.Black);
 
                     spriteBatch.End();
 
@@ -543,10 +545,19 @@ namespace Platformer_Sallway
                         enemies.Remove(e);
                         break;
                     }
-                    else 
+                    else if (IsColliding(player.Bounds, e.Bounds))
                     {
+                        lives--;
 
-                       
+                        if( lives <= 0)
+                        {
+
+                            playerAlive = false;
+                            ChangeState(GameState.GameOver_State);
+
+                        }
+
+                        break;
                     }
                 }
 
