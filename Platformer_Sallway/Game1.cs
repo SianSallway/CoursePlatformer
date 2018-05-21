@@ -321,7 +321,6 @@ namespace Platformer_Sallway
                         RunOnce = true;
                     }
 
-
                     break;
 
                 case GameState.GameWin_State:
