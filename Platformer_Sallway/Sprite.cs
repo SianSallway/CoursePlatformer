@@ -73,8 +73,7 @@ namespace Platformer_Sallway
         {
             get
             {
-                return new Rectangle(new Point((int)position.X, (int)position.Y),
-                    animations[currentAnimation].FrameSize);
+                return new Rectangle(new Point((int)position.X, (int)position.Y), animations[currentAnimation].FrameSize);
             }
         }
     }

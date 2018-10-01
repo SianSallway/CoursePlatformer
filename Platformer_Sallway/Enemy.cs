@@ -91,10 +91,8 @@ namespace Platformer_Sallway
                     }
                 }
 
-                Position = new Vector2((float)Math.Floor(
-               Position.X + (deltaTime * velocity.X)), Position.Y);
-                velocity.X = MathHelper.Clamp(velocity.X + (deltaTime * ddx),
-               -enemyMaxVelocity.X, enemyMaxVelocity.X);
+                Position = new Vector2((float)Math.Floor(Position.X + (deltaTime * velocity.X)), Position.Y);
+                velocity.X = MathHelper.Clamp(velocity.X + (deltaTime * ddx), -enemyMaxVelocity.X, enemyMaxVelocity.X);
             }
         }
 

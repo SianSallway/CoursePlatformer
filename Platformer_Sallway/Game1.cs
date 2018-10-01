@@ -9,7 +9,6 @@ using MonoGame.Extended.ViewportAdapters;
 using System;
 using System.Collections.Generic;
 
-//GitHub Yay!
 
 namespace Platformer_Sallway
 {
@@ -57,6 +56,7 @@ namespace Platformer_Sallway
         TiledMapTileLayer collisionLayer;
 
         Rectangle GoalRec = new Rectangle(6780, 4000, 160, 300);
+        //The game will end when the player collides with this point.
 
         Texture2D SplashSprite;
         Texture2D MenuSprite;
@@ -65,17 +65,6 @@ namespace Platformer_Sallway
         float Timer = 3f;
 
         bool playerAlive = true;
-
-
-        // Following unused code was apart of an attempt to modify code used in Asteriods to implement Game States.
-
-        /* //constant values for states
-        const int State_Splash = 0;
-        const int State_Menu = 1;
-        const int State_Playing = 2;
-        const int State_GameOver = 3;
-
-        int gameState = State_Splash; */
 
         enum GameState
         {
@@ -133,14 +122,6 @@ namespace Platformer_Sallway
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
-            // AIE.StateManager.CreateState("SPLASH", new SplashState());
-            // AIE.StateManager.CreateState("GAME", new GameState());
-            // AIE.StateManager.CreateState("GAMEOVER", new GameOverState());
-
-            //  AIE.StateManager.PushState("SPLASH");
-
-
             player.Load(Content);
 
             arialFont = Content.Load<SpriteFont>("Arial");
@@ -149,8 +130,7 @@ namespace Platformer_Sallway
             MenuSprite = Content.Load<Texture2D>("Menuscreen");
           
 
-            BoxingViewportAdapter viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice,
-              ScreenWidth, ScreenHeight);
+            BoxingViewportAdapter viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice, ScreenWidth, ScreenHeight);
 
             camera = new Camera2D(viewportAdapter);
             camera.Position = new Vector2(0, ScreenHeight);
@@ -160,7 +140,6 @@ namespace Platformer_Sallway
 
             //Loading game music
             gameMusic = Content.Load<Song>("SuperHero_edited");
-            //playingMusic = Content.Load<Song>("SuperHero_original");
             MediaPlayer.Play(gameMusic);
             MediaPlayer.Volume = 0.1f;
 
@@ -200,23 +179,7 @@ namespace Platformer_Sallway
                     }
                 }
 
-               /* if (layer.Name == "Goal")
-                {
-                    //TiledMapObject obj = layer.Objects[0];
-
-                    foreach (TiledMapObject obj in layer.Objects)
-                    {
-
-                        Goal goal = new Goal(this);
-                        goal.Load(Content);
-                        goal.Position = new Vector2(obj.Position.X, obj.Position.Y);
-                        goal.Add(goal);
-
-                    }
-                } */
-
             }
-
 
         }
 
@@ -276,8 +239,6 @@ namespace Platformer_Sallway
                         ChangeState(GameState.Playing_State);
                     }
 
-
-
                     break;
 
                 case GameState.Playing_State:
@@ -289,7 +250,7 @@ namespace Platformer_Sallway
                         RunOnce = true;
                     }
 
-                    Console.WriteLine(player.Position); 
+                    //Console.WriteLine(player.Position); 
 
                     player.Update(deltaTime);
 
@@ -304,11 +265,10 @@ namespace Platformer_Sallway
                     }
 
                     camera.Position = player.Position - new Vector2(ScreenWidth / 2, ScreenHeight / 2);
+                    //the camera will follow the player
 
                     CheckCollisions();
                     
-
-                   // Console.WriteLine(player.Position)
 
                     break;
 
@@ -339,11 +299,7 @@ namespace Platformer_Sallway
 
 
             // TODO: Add your update logic here
-            //AIE.StateManager.Update(Content, gameTime);
-
             // Add update logic here.
-
-
 
             base.Update(gameTime);
         }
@@ -354,32 +310,12 @@ namespace Platformer_Sallway
             RunOnce = false;
         }
 
-
-        // Following unused code is from an attempted to write my own code based of the Asteriods code for Game States.
-        /* //Game state functions
-        private void UpdateSplashState(float deltaTime)
-        {
-
-        }
-        private void DrawSplashState(SpriteBatch spriteBatch)
-        {
-
-        }
-        private void UpdateGameState(float deltaTime)
-        {
-            
-
-        } */
-
-
-
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             switch (GetGameState)
@@ -412,8 +348,7 @@ namespace Platformer_Sallway
                 case GameState.Playing_State:
 
                     Matrix viewMatrix = camera.GetViewMatrix();
-                    Matrix projectionMatrix = Matrix.CreateOrthographicOffCenter(0,
-                        GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 0, 0f, -1f);
+                    Matrix projectionMatrix = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 0, 0f, -1f);
 
                     spriteBatch.Begin(transformMatrix: viewMatrix);
 
@@ -437,8 +372,7 @@ namespace Platformer_Sallway
                     
 
                     // draw all the GUI components in a separte SpriteBatch section 
-                    spriteBatch.DrawString(arialFont, "Score : " + score.ToString(),
-                        camera.Position + new Vector2(20, 60), Color.Green);
+                    spriteBatch.DrawString(arialFont, "Score : " + score.ToString(), camera.Position + new Vector2(20, 60), Color.Green);
 
                     for (int i = 0; i < lives; i++)
                     {
@@ -475,12 +409,7 @@ namespace Platformer_Sallway
                     break;
             }
 
-            // TODO: Add your drawing code here
-            //AIE.StateManager.Draw(spriteBatch);
-
-
-
-
+  
             base.Draw(gameTime);
         }
 
@@ -494,7 +423,6 @@ namespace Platformer_Sallway
             return tile * tileCoord;
         }
 
-        // I'm behind on the rectangle/goal
 
         public int CellAtPixelCoord(Vector2 pixelCoords)
         {
@@ -531,7 +459,7 @@ namespace Platformer_Sallway
         }
 
 
-
+        // Determine what will happen when objects collide
         private void CheckCollisions()
         {
             foreach (Enemy e in enemies)
@@ -544,17 +472,21 @@ namespace Platformer_Sallway
                         enemies.Remove(e);
                         break;
                     }
-                    else if (IsColliding(player.Bounds, e.Bounds))
+                    else if (IsColliding(player.Bounds, e.Bounds) == true)
                     {
-                        lives--;
 
-                        if( lives <= 0)
+                        if(player.Velocity.X <=0)
                         {
+                            lives--;
 
-                            playerAlive = false;
-                            ChangeState(GameState.GameOver_State);
+                            if (lives <= 0)
+                            {
 
-                        }
+                                playerAlive = false;
+                                ChangeState(GameState.GameOver_State);
+
+                            }
+                        }                  
 
                         break;
                     }

@@ -40,8 +40,7 @@ namespace ParticleEffects
 
         public Emitter(Texture2D particleTexture, Vector2 pos)
         {
-            // CHANGE THESE VALUES TO EFFECT HOW THE EMITTER EMITTS PARTICLES
-            //-----------------------------------------------------------------
+            // these values effects how the emitter emits the particles
             position = pos;      // starting position of the emitter
             emissionRate = 1000.0f;
             minLife = 0.5f;
@@ -55,7 +54,7 @@ namespace ParticleEffects
             gravity = 0.0f;
             wind = 0.0f;
             transparency = 0.25f;
-            //-----------------------------------------------------------------
+           
 
             emissionSize = new Vector2(5.0f, 5.0f);
 
@@ -134,7 +133,6 @@ namespace ParticleEffects
 
 
         // STATIC FUNCTIONS TO BUILD EMITTERS WITH SOME PRESET SETTINGS
-        //-------------------------------------------------------------
         public static Emitter CreateBurstEmitter(Texture2D particleTexture, Vector2 pos)
         {
             Emitter e = new Emitter(particleTexture, pos);

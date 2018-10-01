@@ -54,7 +54,6 @@ C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.XInput.xml
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
-C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.csprojResolveAssemblyReference.cache
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.csproj.CoreCompileInputs.cache
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.exe
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.pdb
@@ -72,3 +71,5 @@ C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\princess.xnb
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\Menuscreen.xnb
 C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\bin\Windows\x86\Debug\Content\splashscreen.xnb
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.csprojAssemblyReference.cache
+C:\Users\Sian\Documents\GitHub\CoursePlatformer\Platformer_Sallway\obj\x86\Debug\Platformer_Sallway.csproj.CopyComplete

@@ -187,11 +187,9 @@ namespace Platformer_Sallway
             velocity += acceleration * deltaTime;
 
             // clamp the velocity so the player doesn't go too fast
-            velocity.X = MathHelper.Clamp(velocity.X,
-                -Game1.maxVelocity.X, Game1.maxVelocity.X);
+            velocity.X = MathHelper.Clamp(velocity.X, -Game1.maxVelocity.X, Game1.maxVelocity.X);
 
-            velocity.Y = MathHelper.Clamp(velocity.Y,
-                -Game1.maxVelocity.Y, Game1.maxVelocity.Y);
+            velocity.Y = MathHelper.Clamp(velocity.Y, -Game1.maxVelocity.Y, Game1.maxVelocity.Y);
 
             sprite.position += velocity * deltaTime;
 
@@ -203,8 +201,7 @@ namespace Platformer_Sallway
 
             // In order to avoid this, we must clamp the horizontal velocity to zero if
             // we detect that the players direction has just changed:
-            if ((wasMovingLeft && (velocity.X > 0)) ||
-                (wasMovingRight && (velocity.X < 0)))
+            if ((wasMovingLeft && (velocity.X > 0)) || (wasMovingRight && (velocity.X < 0)))
             {
                 // clamp at zero to prevent friction from making us jiggle side to side
                 velocity.X = 0;

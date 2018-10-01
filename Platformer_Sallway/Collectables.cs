@@ -16,10 +16,6 @@ namespace Platformer_Sallway
         // keep a reference to the Game object to check for collisions on the map
         Game1 game = null;
 
-
-
-
-
         public Vector2 Position
         {
             get { return sprite.position; }
